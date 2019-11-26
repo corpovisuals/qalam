@@ -1,0 +1,61 @@
+/* theme colors */
+$theme-color-1: #591731;
+$theme-color-2: #641E39;
+$theme-color-3: #FCEDCC;
+$theme-color-4: #EDBC93;
+$theme-color-5: #EFA160;
+
+/* supporting colors */
+$success-color: #12a16d;
+$danger-color: #a12f1f;
+$white-color: #fff;
+$offwhite-color: #dcdcdc;
+$dark-color: #424242;
+$grey-color: #585858;
+$emphasized-color: #4a4a4a;
+$shaded-color: #808080;
+$shadow-color: rgba(0, 0, 0, 0.16);
+$placeholder-color: #cdd4ca;
+
+$default-font-color: #333;
+$default-image-color: #d6d6d6;
+
+/* fonts */
+$serif: 'FreeSerif/Regular', 'Times New Roman', Georgia, Cambria, Times, serif;
+$sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+/* font sizes */
+$ratio: 1.55;
+$xs-font-size: (1rem / $ratio);
+$sm-font-size: 1rem;
+$md-font-size: 1rem * $ratio;
+$lg-font-size: 1rem * $ratio * $ratio;
+$xl-font-size: 1rem * $ratio * $ratio * $ratio;
+$bg-font-size: 1rem * $ratio * $ratio * $ratio * $ratio;
+$hg-font-size: 1rem * $ratio * $ratio * $ratio * $ratio * $ratio;
+$jm-font-size: 1rem * $ratio * $ratio * $ratio * $ratio * $ratio * $ratio;
+
+/* breakpoints */
+$xs:     0;
+$xs-min: $xs;
+$sm:     576px;
+$sm-min: $sm;
+$md:     768px;
+$md-min: $md;
+$lg:     992px;
+$lg-min: $lg;
+$hd:     1400px;
+$hd-min: $hd;
+$xl:     1960px;
+$xl-min: $xl;
+$bg:     2600px;
+$bg-min: $bg;
+$hg:     3900px;
+$hg-min: $hg;
+$xs-max: ($sm-min - 1);
+$sm-max: ($md-min - 1);
+$md-max: ($lg-min - 1);
+$lg-max: ($hd-min - 1);
+$hd-max: ($xl-min - 1);
+$xl-max: ($bg-min - 1);
+$bg-max: ($hg-min - 1);

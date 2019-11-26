@@ -1,0 +1,22 @@
+@value sm-max from 'qalam/styles/settings/breakpoints';
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.compact-container {
+  max-width: calc(40vh + 50vw);
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: sm-max) {
+  .compact-container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}

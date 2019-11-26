@@ -1,0 +1,29 @@
+/* fonts */
+@font-face {
+  font-family: 'FreeSerif/Regular';
+  src: url('fonts/free-serif-regular.ttf');
+}
+
+@font-face {
+  font-family: 'FreeSerif/Bold';
+  src: url('fonts/free-serif-bold.ttf');
+}
+
+@font-face {
+  font-family: 'FreeSerif/Italic';
+  src: url('fonts/free-serif-italic.ttf');
+}
+
+@value serif: 'FreeSerif/Regular', 'Times New Roman', Georgia, Cambria, Times, serif;
+@value sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+/* font sizes */
+@value ratio: 1.55;
+@value xs-font-size: (1rem / ratio);
+@value sm-font-size: 1rem;
+@value md-font-size: 1rem * ratio;
+@value lg-font-size: 1rem * ratio * ratio;
+@value xl-font-size: 1rem * ratio * ratio * ratio;
+@value bg-font-size: 1rem * ratio * ratio * ratio * ratio;
+@value hg-font-size: 1rem * ratio * ratio * ratio * ratio * ratio;
+@value jm-font-size: 1rem * ratio * ratio * ratio * ratio * ratio * ratio;

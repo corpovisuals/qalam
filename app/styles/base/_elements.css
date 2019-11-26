@@ -1,0 +1,48 @@
+@value theme-color-2 from 'qalam/styles/settings/colors';
+@value serif, md-font-size, lg-font-size, xl-font-size, bg-font-size, hg-font-size, jm-font-size from 'qalam/styles/settings/typography';
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: serif;
+  font-size: rfs(md-font-size);
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: theme-color-2;
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: rfs(jm-font-size);
+}
+
+h2 {
+  font-size: rfs(hg-font-size);
+}
+
+h3 {
+  font-size: rfs(bg-font-size);
+}
+
+h4 {
+  font-size: rfs(xl-font-size);
+}
+
+h5 {
+  font-size: rfs(lg-font-size);
+}
+
+h6 {
+  font-size: rfs(md-font-size);
+}
