@@ -1,1 +1,1 @@
-export { Editor } from './editor/editor';
+export * from './app/editor';

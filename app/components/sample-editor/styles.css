@@ -1,0 +1,8 @@
+.container {
+  composes: compact-container from 'qalam/styles/generic/container';
+  max-width: calc(700px + 5vw);
+}
+
+.editor {
+  margin-top: 50px;
+}
