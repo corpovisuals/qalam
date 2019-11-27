@@ -10,6 +10,7 @@ import {
   deleteRow, mergeCells, splitCell, toggleHeaderRow, toggleHeaderColumn,
   toggleHeaderCell, deleteTable
 } from 'prosemirror-tables';
+// import { createTable } from 'prosemirror-utils';
 import { icons } from './icons';
 
 export function buildMenuItems(schema) {
@@ -106,6 +107,7 @@ export function buildMenuItems(schema) {
 
   if (type = schema.nodes.table) {
     r.insertTable = cut([
+      // item('Create Table', createTable),
       item('Insert column before', addColumnBefore),
       item('Insert column after', addColumnAfter),
       item('Insert row before', addRowBefore),
