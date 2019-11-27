@@ -1,26 +1,28 @@
-import { Schema, DOMParser } from 'prosemirror-model';
+import { DOMParser } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
-import { addListNodes } from 'prosemirror-schema-list';
 import { exampleSetup } from 'prosemirror-example-setup';
+import { fixTables } from 'prosemirror-tables';
 import { schema } from './schema';
 import { buildMenuItems } from './menu';
+import tablePlugins from './plugins/table';
 
 export class Editor {
   constructor(options) {
-    const mySchema = new Schema({
-      nodes: addListNodes(schema.spec.nodes, 'paragraph block*', 'block'),
-      marks: schema.spec.marks
+    let doc = DOMParser.fromSchema(schema).parse(options.content)
+    let state = EditorState.create({
+      doc,
+      plugins: exampleSetup({
+        schema,
+        menuContent: buildMenuItems(schema).fullMenu
+      }).concat(tablePlugins)
     });
 
+    let fix = fixTables(state);
+    if (fix) state = state.apply(fix.setMeta('addToHistory', false));
+
     let view = new EditorView(options.place, {
-      state: EditorState.create({
-        doc: DOMParser.fromSchema(mySchema).parse(options.content),
-        plugins: exampleSetup({
-          schema: mySchema,
-          menuContent: buildMenuItems(mySchema).fullMenu
-        })
-      }),
+      state,
 
       dispatchTransaction(transaction) {
         let newState = view.state.apply(transaction);

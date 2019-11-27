@@ -1,11 +1,13 @@
-import {Schema} from "prosemirror-model"
+import { Schema } from "prosemirror-model"
+import { addListNodes } from 'prosemirror-schema-list';
+import { tableNodes } from 'prosemirror-tables';
 
 const pDOM = ["p", 0], blockquoteDOM = ["blockquote", 0], hrDOM = ["hr"],
-      preDOM = ["pre", ["code", 0]], brDOM = ["br"]
+      preDOM = ["pre", ["code", 0]], brDOM = ["br"];
 
 // :: Object
 // [Specs](#model.NodeSpec) for the nodes defined in this schema.
-export const nodes = {
+const nodes = {
   // :: NodeSpec The top level document node.
   doc: {
     content: "block+"
@@ -101,12 +103,12 @@ export const nodes = {
     parseDOM: [{tag: "br"}],
     toDOM() { return brDOM }
   }
-}
+};
 
-const emDOM = ["em", 0], strongDOM = ["strong", 0], codeDOM = ["code", 0]
+const emDOM = ["em", 0], strongDOM = ["strong", 0], codeDOM = ["code", 0];
 
 // :: Object [Specs](#model.MarkSpec) for the marks in the schema.
-export const marks = {
+const marks = {
   // :: MarkSpec A link. Has `href` and `title` attributes. `title`
   // defaults to the empty string. Rendered and parsed as an `<a>`
   // element.
@@ -146,7 +148,7 @@ export const marks = {
     parseDOM: [{tag: "code"}],
     toDOM() { return codeDOM }
   }
-}
+};
 
 // :: Schema
 // This schema roughly corresponds to the document schema used by
@@ -156,4 +158,24 @@ export const marks = {
 //
 // To reuse elements from this schema, extend or read from its
 // `spec.nodes` and `spec.marks` [properties](#model.Schema.spec).
-export const schema = new Schema({nodes, marks})
+const baseSchema = new Schema({nodes, marks});
+
+export const schema = new Schema({
+  nodes: addListNodes(
+    baseSchema.spec.nodes, 'paragraph block*', 'block'
+  ).append(tableNodes({
+    tableGroup: "block",
+    cellContent: "block+",
+    cellAttributes: {
+      background: {
+        default: null,
+        getFromDOM(dom) { return dom.style.backgroundColor || null },
+        setDOMAttr(value, attrs) {
+          if (value) attrs.style = (attrs.style || '') + `background-color: ${value};`
+        }
+      }
+    }
+  })),
+
+  marks: baseSchema.spec.marks
+});

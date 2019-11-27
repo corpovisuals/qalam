@@ -2,3 +2,17 @@
 @import 'vendors/all';
 @import 'base/elements';
 @import 'modules';
+
+.ProseMirror {
+  padding: 15px;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+.ProseMirror-menubar,
+.ProseMirror-menuitem {
+  display: flex;
+  align-items: center;
+}
