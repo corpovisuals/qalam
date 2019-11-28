@@ -10,7 +10,7 @@ import {
   deleteRow, mergeCells, splitCell, toggleHeaderRow, toggleHeaderColumn,
   toggleHeaderCell, deleteTable
 } from 'prosemirror-tables';
-// import { createTable } from 'prosemirror-utils';
+import { createTable } from 'prosemirror-utils';
 import { icons } from './icons';
 
 export function buildMenuItems(schema) {
@@ -107,7 +107,14 @@ export function buildMenuItems(schema) {
 
   if (type = schema.nodes.table) {
     r.insertTable = cut([
-      // item('Create Table', createTable),
+      item('Create table', (state, dispatch) => {
+        if (dispatch) {
+          const nodes = createTable(schema);
+          const tr = state.tr.replaceSelectionWith(nodes).scrollIntoView();
+          dispatch(tr);
+        }
+        return true;
+      }),
       item('Insert column before', addColumnBefore),
       item('Insert column after', addColumnAfter),
       item('Insert row before', addRowBefore),
@@ -128,15 +135,20 @@ export function buildMenuItems(schema) {
   undoItem.spec.icon = icons.undo;
   redoItem.spec.icon = icons.redo;
 
-  r.imageMenu = new Dropdown(cut([r.insertImage]), {label: 'Image'});
-  r.tableMenu = new Dropdown(r.insertTable, {label: 'Table'});
-  r.typeMenu = new Dropdown(cut([r.makeParagraph, r.wrapBlockQuote, r.makeHead1 && new DropdownSubmenu(cut([
-    r.makeHead1, r.makeHead2, r.makeHead3, r.makeHead4, r.makeHead5, r.makeHead6
-  ]), {label: 'Heading'})]), {label: 'Style'});
+  r.insertMenu = new Dropdown(cut([
+    r.insertImage,
+    r.insertTable && new DropdownSubmenu(r.insertTable, { label: 'Table' })
+  ]), { label: 'Insert' });
+
+  r.typeMenu = new Dropdown(cut([
+    r.makeParagraph, r.wrapBlockQuote,
+    r.makeHead1 && new DropdownSubmenu(cut([
+      r.makeHead1, r.makeHead2, r.makeHead3, r.makeHead4, r.makeHead5, r.makeHead6
+    ]), { label: 'Heading' })
+  ]), { label: 'Style' });
 
   r.inlineMenu = [cut([r.toggleStrong, r.toggleEm, r.toggleLink])];
-  r.blockMenu = [cut([r.wrapBulletList, r.wrapOrderedList, joinUpItem,
-                      liftItem])];
+  r.blockMenu = [cut([r.wrapBulletList, r.wrapOrderedList, joinUpItem, liftItem])];
   r.alignMenu = [cut([r.alignLeft, r.alignRight, r.alignCenter, r.alignJustify])];
   r.undoRedo = [[undoItem, redoItem]];
 
@@ -145,8 +157,7 @@ export function buildMenuItems(schema) {
     r.inlineMenu,
     r.alignMenu,
     r.blockMenu,
-    [[r.imageMenu]],
-    [[r.tableMenu]],
+    [[r.insertMenu]],
     r.undoRedo
   );
 
