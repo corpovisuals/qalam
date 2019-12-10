@@ -1,9 +1,26 @@
+@value sm-font-size from 'qalam/styles/settings/typography';
+
+.title {
+  padding: 20px;
+}
+
 .container {
-  composes: compact-container from 'qalam/styles/generic/container';
-  max-width: calc(700px + 5vw);
+  padding: 20px;
+  height: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .editor {
-  margin-top: 50px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  max-width: calc(700px + 5vw);
+}
+
+.output {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  font-size: rfs(sm-font-size);
+  background-color: black;
+  color: lawngreen;
 }

@@ -28,7 +28,7 @@ export class Editor {
         let newState = view.state.apply(transaction);
         view.updateState(newState);
         if (transaction.docChanged) {
-          options.onUpdate(view.dom.innerHTML);
+          options.onUpdate(view.dom.innerHTML, transaction.doc);
         }
       }
     });

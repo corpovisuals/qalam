@@ -6,7 +6,11 @@ export default class SampleEditor extends Component {
     instance.editorView = new Editor({
       place: element,
       content: element.nextElementSibling,
-      onUpdate: function () {}
+      onUpdate: function (_html, doc) {
+        element.parentElement.nextElementSibling.textContent = JSON.stringify(
+          doc, null, 4
+        );
+      }
     });
   }
 
