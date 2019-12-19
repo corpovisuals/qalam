@@ -10,8 +10,13 @@ export default class Paragraph extends Node {
     return {
       content: "inline*",
       group: "block",
-      parseDOM: [{tag: "p"}],
-      toDOM() { return ["p", 0] }
+      attrs: {
+        style: { default: null }
+      },
+      parseDOM: [{tag: "p", getAttrs(dom) {
+        return { style: dom.getAttribute("style") }
+      }}],
+      toDOM(node) { let { style } = node.attrs; return ["p", {style}, 0]; }
     }
   }
 
