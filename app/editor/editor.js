@@ -34,7 +34,7 @@ export class Editor {
     this.extensions = this.createExtensions();
     this.schema = this.createSchema();
     this.state = this.createState();
-    return this.createView();
+    this.view = this.createView();
   }
 
   createExtensions() {
@@ -70,7 +70,7 @@ export class Editor {
       doc,
       plugins: exampleSetup({
         schema: this.schema,
-        menuContent: buildMenuItems(this.schema).fullMenu
+        menuContent: buildMenuItems(this.schema, this.extensions).fullMenu
       }).concat(tablePlugins)
     });
 

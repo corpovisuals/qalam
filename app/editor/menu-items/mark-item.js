@@ -1,4 +1,3 @@
-import { toggleMark } from 'prosemirror-commands';
 import { cmdItem } from './cmd-item';
 
 function markActive(state, type) {
@@ -7,11 +6,13 @@ function markActive(state, type) {
   else return state.doc.rangeHasMark(from, to, type)
 }
 
-export function markItem(markType, options) {
-  let passedOptions = {
-    active(state) { return markActive(state, markType) },
-    enable: true
+export function markItem(commands) {
+  return (markType, options) => {
+    let passedOptions = {
+      active(state) { return markActive(state, markType) },
+      enable: true
+    }
+    for (let prop in options) passedOptions[prop] = options[prop]
+    return cmdItem(commands[markType.name](), passedOptions)
   }
-  for (let prop in options) passedOptions[prop] = options[prop]
-  return cmdItem(toggleMark(markType), passedOptions)
 }

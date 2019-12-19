@@ -13,28 +13,33 @@ import {
 import { createTable } from 'prosemirror-utils';
 import { icons } from './icons';
 
-export function buildMenuItems(schema) {
+export function buildMenuItems(schema, extensions) {
   let r = {}, type;
+  let commands = extensions.commands({ schema });
+
+  const apply = (cb, type, options) => {
+    return cb(commands)(type, options);
+  }
 
   /* eslint-disable no-cond-assign */
 
   if (type = schema.marks.strong) {
-    r.toggleStrong = markItem(type, {title: 'Toggle bold', icon: icons.strong});
+    r.toggleStrong = apply(markItem, type, {title: 'Toggle bold', icon: icons.strong});
   }
 
   if (type = schema.marks.em) {
-    r.toggleEm = markItem(type, {title: 'Toggle emphasis', icon: icons.em});
+    r.toggleEm = apply(markItem, type, {title: 'Toggle emphasis', icon: icons.em});
   }
 
   if (type = schema.marks.link) {
-    r.toggleLink = linkItem(type, {
+    r.toggleLink = apply(linkItem, type, {
       title: 'Add or remove link',
       icon: icons.link
     });
   }
 
   if (type = schema.nodes.image) {
-    r.insertImage = insertImageItem(type, {
+    r.insertImage = apply(insertImageItem, type, {
       title: 'Insert image',
       label: 'Image'
     });
@@ -67,25 +72,25 @@ export function buildMenuItems(schema) {
       label: 'Plain'
     });
 
-    r.alignLeft = styleItem(type, {
+    r.alignLeft = apply(styleItem, type, {
       title: 'Align left',
       icon: icons.alignLeft,
       attrs: { style: 'text-align: left' }
     });
 
-    r.alignRight = styleItem(type, {
+    r.alignRight = apply(styleItem, type, {
       title: 'Align Right',
       icon: icons.alignRight,
       attrs: { style: 'text-align: right' }
     });
 
-    r.alignCenter = styleItem(type, {
+    r.alignCenter = apply(styleItem, type, {
       title: 'Align Center',
       icon: icons.alignCenter,
       attrs: { style: 'text-align: center' }
     });
 
-    r.alignJustify = styleItem(type, {
+    r.alignJustify = apply(styleItem, type, {
       title: 'Justify both sides',
       icon: icons.alignJustify,
       attrs: { style: 'text-align: justify' }

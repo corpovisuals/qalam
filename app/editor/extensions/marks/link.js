@@ -1,4 +1,5 @@
 import Mark from '../types/mark';
+import { addLink } from '../../commands'
 
 export default class Link extends Mark {
   get name() {
@@ -17,5 +18,9 @@ export default class Link extends Mark {
       }}],
       toDOM(node) { let {href, title} = node.attrs; return ["a", {href, title}, 0] }
     }
+  }
+
+  commands({ type }) {
+    return () => addLink(type);
   }
 }

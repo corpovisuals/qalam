@@ -1,4 +1,5 @@
 import Mark from '../types/mark';
+import { toggleMark } from '../../commands'
 
 export default class Strong extends Mark {
   get name() {
@@ -15,5 +16,9 @@ export default class Strong extends Mark {
                  {style: "font-weight", getAttrs: value => /^(bold(er)?|[5-9]\d{2,})$/.test(value) && null}],
       toDOM() { return ["strong", 0] }
     }
+  }
+
+  commands({ type }) {
+    return () => toggleMark(type);
   }
 }
