@@ -1,12 +1,13 @@
 import { DOMParser } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
-import { exampleSetup } from 'prosemirror-example-setup';
 import { fixTables } from 'prosemirror-tables';
-import { buildMenuItems } from './menu';
-import tablePlugins from './plugins/table';
-import { Schema } from "prosemirror-model"
+import { Schema } from 'prosemirror-model';
+import { menuBar } from 'prosemirror-menu';
 import { addListNodes } from 'prosemirror-schema-list';
+import { exampleSetup } from './setup';
+import { buildMenuItems } from './menu';
+import plugins from './plugins';
 
 import nodeInstances from './extensions/nodes/all';
 import markInstances from './extensions/marks/all';
@@ -70,8 +71,9 @@ export class Editor {
       doc,
       plugins: exampleSetup({
         schema: this.schema,
-        menuContent: buildMenuItems(this.schema, this.extensions).fullMenu
-      }).concat(tablePlugins)
+      }).concat([
+        menuBar({ content: buildMenuItems(this.schema, this.extensions).fullMenu })
+      ]).concat(plugins)
     });
 
     let fix = fixTables(state);
