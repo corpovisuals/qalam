@@ -21,6 +21,8 @@ export default class Paragraph extends Node {
   }
 
   commands({ type }) {
-    return (attrs) => setStyle(type, attrs);
+    return {
+      setStyle: (attrs) => setStyle(type, attrs)
+    }
   }
 }

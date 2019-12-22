@@ -18,7 +18,7 @@ function isStyleActive(state, nodeType, attrs) {
 
 export function styleItem(commands) {
   return (nodeType, options) => {
-    let command = commands[nodeType.name](options.attrs);
+    let command = commands['setStyle'](options.attrs);
     let passedOptions = {
       active(state) { return isStyleActive(state, nodeType, options.attrs) },
       enable(state) { return command(state) },
