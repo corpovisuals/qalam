@@ -4,7 +4,7 @@ import {
 } from 'prosemirror-menu';
 import { linkItem, styleItem, insertImageItem,
   markItem, wrapListItem
-} from './menu-items';
+} from './items';
 import { icons } from './icons';
 
 export function buildMenuItems(schema, extensions) {
