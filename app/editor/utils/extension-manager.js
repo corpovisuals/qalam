@@ -60,4 +60,27 @@ export default class ExtensionManager {
         };
       }, {});
   }
+
+  inputRules({ schema }) {
+    const extensionInputRules = this.extensions
+      .filter(extension => ['extension'].includes(extension.type))
+      .filter(extension => extension.inputRules)
+      .map(extension => extension.inputRules({ schema }))
+
+    const nodeMarkInputRules = this.extensions
+      .filter(extension => ['node', 'mark'].includes(extension.type))
+      .filter(extension => extension.inputRules)
+      .map(extension => extension.inputRules({
+        type: schema[`${extension.type}s`][extension.name],
+        schema,
+      }))
+
+    return [
+      ...extensionInputRules,
+      ...nodeMarkInputRules,
+    ].reduce((allInputRules, inputRules) => ([
+      ...allInputRules,
+      ...inputRules,
+    ]), [])
+  }
 }

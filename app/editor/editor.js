@@ -1,9 +1,10 @@
 import { DOMParser } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
-import { fixTables } from 'prosemirror-tables';
 import { Schema } from 'prosemirror-model';
+import { inputRules, smartQuotes, emDash, ellipsis} from 'prosemirror-inputrules';
 import { menuBar } from 'prosemirror-menu';
+import { fixTables } from 'prosemirror-tables';
 import { addListNodes } from 'prosemirror-schema-list';
 import { exampleSetup } from './setup';
 import { buildMenuItems } from './menu';
@@ -34,6 +35,7 @@ export class Editor {
 
     this.extensions = this.createExtensions();
     this.schema = this.createSchema();
+    this.inputRules = this.createInputRules();
     this.state = this.createState();
     this.view = this.createView();
   }
@@ -48,6 +50,12 @@ export class Editor {
 
   createMarks() {
     return this.extensions.marks;
+  }
+
+  createInputRules() {
+    return this.extensions.inputRules({
+      schema: this.schema,
+    }).concat(smartQuotes).concat(ellipsis, emDash);
   }
 
   createSchema() {
@@ -72,6 +80,9 @@ export class Editor {
       plugins: exampleSetup({
         schema: this.schema,
       }).concat([
+        inputRules({
+          rules: this.inputRules,
+        }),
         menuBar({ content: buildMenuItems(this.schema, this.extensions).fullMenu })
       ]).concat(plugins)
     });

@@ -1,7 +1,6 @@
 import {keymap} from "prosemirror-keymap"
 
 import {buildKeymap} from "./keymap"
-import {buildInputRules} from "./inputrules"
 
 // !! This module exports helper functions for deriving a set of basic
 // menu items, input rules, or key bindings from a schema. These
@@ -41,7 +40,6 @@ import {buildInputRules} from "./inputrules"
 //     Can be used to override the menu content.
 export function exampleSetup(options) {
   return [
-    buildInputRules(options.schema),
     keymap(buildKeymap(options.schema, options.mapKeys))
   ]
 }
