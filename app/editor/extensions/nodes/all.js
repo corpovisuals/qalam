@@ -10,6 +10,7 @@ import {
   HardBreak,
   Table,
   TableRow,
+  TableColumn,
   TableCell,
   TableHeader,
 } from './index';
@@ -26,6 +27,7 @@ export default [
   new HardBreak(),
   new Table(),
   new TableRow(),
+  new TableColumn(),
   new TableCell(),
   new TableHeader()
 ];

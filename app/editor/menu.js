@@ -5,12 +5,6 @@ import {
 import { linkItem, styleItem, insertImageItem,
   markItem, wrapListItem
 } from './menu-items';
-import {
-  addColumnAfter, addColumnBefore, deleteColumn, addRowAfter, addRowBefore,
-  deleteRow, mergeCells, splitCell, toggleHeaderRow, toggleHeaderColumn,
-  toggleHeaderCell, deleteTable
-} from 'prosemirror-tables';
-import { createTable } from 'prosemirror-utils';
 import { icons } from './icons';
 
 export function buildMenuItems(schema, extensions) {
@@ -112,26 +106,19 @@ export function buildMenuItems(schema, extensions) {
 
   if (type = schema.nodes.table) {
     r.insertTable = cut([
-      item('Create table', (state, dispatch) => {
-        if (dispatch) {
-          const nodes = createTable(schema);
-          const tr = state.tr.replaceSelectionWith(nodes).scrollIntoView();
-          dispatch(tr);
-        }
-        return true;
-      }),
-      item('Insert column before', addColumnBefore),
-      item('Insert column after', addColumnAfter),
-      item('Insert row before', addRowBefore),
-      item('Insert row after', addRowAfter),
-      item('Merge cells', mergeCells),
-      item('Split cell', splitCell),
-      item('Toggle header column', toggleHeaderColumn),
-      item('Toggle header row', toggleHeaderRow),
-      item('Toggle header cells', toggleHeaderCell),
-      item('Delete column', deleteColumn),
-      item('Delete row', deleteRow),
-      item('Delete table', deleteTable)
+      item('Create table', commands['createTable']()),
+      item('Insert column before', commands['addColumnBefore']()),
+      item('Insert column after', commands['addColumnAfter']()),
+      item('Insert row before', commands['addRowBefore']()),
+      item('Insert row after', commands['addRowAfter']()),
+      item('Merge cells', commands['mergeCells']()),
+      item('Split cell', commands['splitCell']()),
+      item('Toggle header column', commands['toggleHeaderColumn']()),
+      item('Toggle header row', commands['toggleHeaderRow']()),
+      item('Toggle header cells', commands['toggleHeaderCell']()),
+      item('Delete column', commands['deleteColumn']()),
+      item('Delete row', commands['deleteRow']()),
+      item('Delete table', commands['deleteTable']())
     ]);
   }
 
