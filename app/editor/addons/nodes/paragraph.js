@@ -1,5 +1,6 @@
 import Node from '../types/node';
-import { setStyle } from '../../commands'
+import { setBlockType } from 'prosemirror-commands';
+import { setStyle } from '../../commands';
 
 export default class Paragraph extends Node {
   get name() {
@@ -17,6 +18,12 @@ export default class Paragraph extends Node {
         return { style: dom.getAttribute("style") }
       }}],
       toDOM(node) { let { style } = node.attrs; return ["p", {style}, 0]; }
+    }
+  }
+
+  keys({ type }) {
+    return {
+      'Shift-Ctrl-0': setBlockType(type)
     }
   }
 

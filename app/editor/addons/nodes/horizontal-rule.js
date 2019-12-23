@@ -12,4 +12,13 @@ export default class HorizontalRule extends Node {
       toDOM() { return ["hr"] }
     }
   }
+
+  keys({ type }) {
+    return {
+      'Mod-_': (state, dispatch) => {
+        dispatch(state.tr.replaceSelectionWith(type.create()).scrollIntoView());
+        return true;
+      }
+    }
+  }
 }

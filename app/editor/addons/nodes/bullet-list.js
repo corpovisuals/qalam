@@ -1,9 +1,16 @@
 import Node from '../types/node';
-import { wrappingInputRule } from "prosemirror-inputrules"
+import { wrapInList } from 'prosemirror-schema-list';
+import { wrappingInputRule } from 'prosemirror-inputrules';
 
 export default class BulletList extends Node {
   get name() {
     return 'bullet_list';
+  }
+
+  keys({ type }) {
+    return {
+      'Shift-Ctrl-8': wrapInList(type)
+    }
   }
 
   inputRules({ type }) {

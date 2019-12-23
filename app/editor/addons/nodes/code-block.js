@@ -1,4 +1,5 @@
 import Node from '../types/node';
+import { setBlockType } from 'prosemirror-commands';
 import { textblockTypeInputRule } from 'prosemirror-inputrules';
 
 export default class CodeBlock extends Node {
@@ -15,6 +16,12 @@ export default class CodeBlock extends Node {
       defining: true,
       parseDOM: [{tag: "pre", preserveWhitespace: "full"}],
       toDOM() { return ["pre", ["code", 0]] }
+    }
+  }
+
+  keys({ type }) {
+    return {
+      'Shift-Ctrl-\\': setBlockType(type)
     }
   }
 

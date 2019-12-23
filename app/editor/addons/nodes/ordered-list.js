@@ -1,9 +1,16 @@
 import Node from '../types/node';
-import { wrappingInputRule } from "prosemirror-inputrules"
+import { wrapInList } from 'prosemirror-schema-list';
+import { wrappingInputRule } from 'prosemirror-inputrules';
 
 export default class OrderedList extends Node {
   get name() {
     return 'ordered_list';
+  }
+
+  keys({ type }) {
+    return {
+      'Shift-Ctrl-9': wrapInList(type)
+    }
   }
 
   inputRules({ type }) {

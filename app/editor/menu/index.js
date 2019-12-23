@@ -7,9 +7,9 @@ import { linkItem, styleItem, insertImageItem,
 } from './items';
 import { icons } from './icons';
 
-export function buildMenuItems(schema, extensions) {
+export function buildMenuItems(schema, addons) {
   let r = {}, type;
-  let commands = extensions.commands({ schema });
+  let commands = addons.commands({ schema });
 
   const apply = (cb, type, options) => {
     return cb(commands)(type, options);

@@ -6,21 +6,22 @@ import { inputRules, smartQuotes, emDash, ellipsis} from 'prosemirror-inputrules
 import { menuBar } from 'prosemirror-menu';
 import { fixTables } from 'prosemirror-tables';
 import { addListNodes } from 'prosemirror-schema-list';
-import { exampleSetup } from './setup';
 import { buildMenuItems } from './menu';
 import plugins from './plugins';
 
-import nodeInstances from './extensions/nodes/all';
-import markInstances from './extensions/marks/all';
+import nodeInstances from './addons/nodes/all';
+import markInstances from './addons/marks/all';
+import extensionInstances from './addons/extensions/all';
 
-import ExtensionManager from './utils/extension-manager';
+import AddonManager from './utils/addon-manager';
 
 export class Editor {
   constructor(options = {}) {
     this.defaultOptions = {
-      extensions: [
+      addons: [
         ...nodeInstances,
-        ...markInstances
+        ...markInstances,
+        ...extensionInstances
       ]
     }
 
@@ -33,27 +34,34 @@ export class Editor {
       ...options,
     }
 
-    this.extensions = this.createExtensions();
+    this.addons = this.createAddons();
     this.schema = this.createSchema();
+    this.keymaps = this.createKeymaps();
     this.inputRules = this.createInputRules();
     this.state = this.createState();
     this.view = this.createView();
   }
 
-  createExtensions() {
-    return new ExtensionManager(this.options.extensions);
+  createAddons() {
+    return new AddonManager(this.options.addons);
   }
 
   createNodes() {
-    return this.extensions.nodes;
+    return this.addons.nodes;
   }
 
   createMarks() {
-    return this.extensions.marks;
+    return this.addons.marks;
+  }
+
+  createKeymaps() {
+    return this.addons.keymaps({
+      schema: this.schema,
+    })
   }
 
   createInputRules() {
-    return this.extensions.inputRules({
+    return this.addons.inputRules({
       schema: this.schema,
     }).concat(smartQuotes).concat(ellipsis, emDash);
   }
@@ -77,14 +85,13 @@ export class Editor {
     let doc = DOMParser.fromSchema(this.schema).parse(this.options.content)
     let state = EditorState.create({
       doc,
-      plugins: exampleSetup({
-        schema: this.schema,
-      }).concat([
+      plugins: [
         inputRules({
           rules: this.inputRules,
         }),
-        menuBar({ content: buildMenuItems(this.schema, this.extensions).fullMenu })
-      ]).concat(plugins)
+        ...this.keymaps,
+        menuBar({ content: buildMenuItems(this.schema, this.addons).fullMenu })
+      ].concat(plugins)
     });
 
     let fix = fixTables(state);

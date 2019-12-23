@@ -1,9 +1,16 @@
 import Node from '../types/node';
-import { textblockTypeInputRule } from "prosemirror-inputrules"
+import { setBlockType } from 'prosemirror-commands';
+import { textblockTypeInputRule } from 'prosemirror-inputrules';
 
 export default class Heading extends Node {
   get name() {
     return 'heading';
+  }
+
+  get defaultOptions() {
+    return {
+      levels: [1, 2, 3, 4, 5, 6],
+    }
   }
 
   get schema() {
@@ -20,6 +27,15 @@ export default class Heading extends Node {
                  {tag: "h6", attrs: {level: 6}}],
       toDOM(node) { return ["h" + node.attrs.level, 0] }
     }
+  }
+
+  keys({ type }) {
+    return this.options.levels.reduce((items, level) => ({
+      ...items,
+      ...{
+        [`Shift-Ctrl-${level}`]: setBlockType(type, { level }),
+      },
+    }), {})
   }
 
   inputRules({ type }) {

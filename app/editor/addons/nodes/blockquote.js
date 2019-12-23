@@ -1,5 +1,6 @@
 import Node from '../types/node';
 import { wrappingInputRule } from 'prosemirror-inputrules';
+import { wrapIn } from 'prosemirror-commands';
 
 export default class Blockquote extends Node {
   get name() {
@@ -13,6 +14,12 @@ export default class Blockquote extends Node {
       defining: true,
       parseDOM: [{tag: "blockquote"}],
       toDOM() { return ["blockquote", 0] }
+    }
+  }
+
+  keys({ type }) {
+    return {
+      'Ctrl->': wrapIn(type)
     }
   }
 
