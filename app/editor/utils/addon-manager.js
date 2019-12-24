@@ -23,6 +23,15 @@ export default class AddonManager {
       }), {});
   }
 
+  get plugins() {
+    return this.addons
+      .filter(addon => addon.plugins)
+      .reduce((allPlugins, { plugins }) => ([
+        ...allPlugins,
+        ...plugins,
+      ]), []);
+  }
+
   keymaps({ schema }) {
     const extensionKeymaps = this.addons
       .filter(addon => ['extension'].includes(addon.type))

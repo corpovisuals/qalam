@@ -1,4 +1,5 @@
 import Extension from '../../types/extension';
+import { columnResizing } from 'prosemirror-tables';
 import {
   addColumnAfter,
   addColumnBefore,
@@ -8,6 +9,12 @@ import {
 export default class TableColumn extends Extension {
   get name() {
     return 'table_column';
+  }
+
+  get plugins() {
+    return [
+      columnResizing()
+    ]
   }
 
   commands() {

@@ -2,11 +2,18 @@ import { DOMParser } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { Schema } from 'prosemirror-model';
-import { inputRules, smartQuotes, emDash, ellipsis} from 'prosemirror-inputrules';
 import { menuBar } from 'prosemirror-menu';
 import { fixTables } from 'prosemirror-tables';
+import { keymap } from 'prosemirror-keymap';
+import { Plugin } from "prosemirror-state";
+import { baseKeymap } from "prosemirror-commands";
+import { dropCursor } from "prosemirror-dropcursor";
+import { gapCursor } from "prosemirror-gapcursor";
+import {
+  inputRules, smartQuotes, emDash, ellipsis
+} from 'prosemirror-inputrules';
+
 import { buildMenuItems } from './ui';
-import plugins from './plugins';
 
 import nodeInstances from './addons/nodes/all';
 import markInstances from './addons/marks/all';
@@ -35,6 +42,7 @@ export class Editor {
 
     this.addons = this.createAddons();
     this.schema = this.createSchema();
+    this.plugins = this.createPlugins();
     this.keymaps = this.createKeymaps();
     this.inputRules = this.createInputRules();
     this.state = this.createState();
@@ -51,6 +59,10 @@ export class Editor {
 
   createMarks() {
     return this.addons.marks;
+  }
+
+  createPlugins() {
+    return this.addons.plugins;
   }
 
   createKeymaps() {
@@ -77,12 +89,21 @@ export class Editor {
     let state = EditorState.create({
       doc,
       plugins: [
+        ...this.plugins,
         inputRules({
           rules: this.inputRules,
         }),
         ...this.keymaps,
-        menuBar({ content: buildMenuItems(this.schema, this.addons).fullMenu })
-      ].concat(plugins)
+        keymap(baseKeymap),
+        dropCursor(),
+        gapCursor(),
+        menuBar({ content: buildMenuItems(this.schema, this.addons).fullMenu }),
+        new Plugin({
+          props: {
+            attributes: {class: "ProseMirror-example-setup-style"}
+          }
+        })
+      ]
     });
 
     let fix = fixTables(state);

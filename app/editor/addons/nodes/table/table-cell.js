@@ -1,5 +1,7 @@
 import Node from '../../types/node';
 import TableNodes from './all';
+import { keymap } from 'prosemirror-keymap';
+import { goToNextCell } from 'prosemirror-tables';
 import {
   mergeCells,
   splitCell
@@ -12,6 +14,15 @@ export default class TableCell extends Node {
 
   get schema() {
     return TableNodes.table_cell;
+  }
+
+  get plugins() {
+    return [
+      keymap({
+        'Tab': goToNextCell(1),
+        'Shift-Tab': goToNextCell(-1)
+      })
+    ]
   }
 
   commands() {

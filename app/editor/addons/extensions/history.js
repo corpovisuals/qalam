@@ -1,9 +1,15 @@
 import Extension from '../types/extension';
-import { undo, redo } from 'prosemirror-history';
+import { history, undo, redo } from 'prosemirror-history';
 
 export default class History extends Extension {
   get name() {
     return 'history';
+  }
+
+  get plugins() {
+    return [
+      history()
+    ]
   }
 
   keys() {

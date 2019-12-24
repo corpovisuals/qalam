@@ -1,5 +1,6 @@
 import Node from '../../types/node';
 import TableNodes from './all';
+import { tableEditing } from 'prosemirror-tables';
 import {
   createTable,
   deleteTable
@@ -12,6 +13,12 @@ export default class Table extends Node {
 
   get schema() {
     return TableNodes.table;
+  }
+
+  get plugins() {
+    return [
+      tableEditing()
+    ]
   }
 
   commands({ schema }) {
