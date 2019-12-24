@@ -2,7 +2,6 @@ import { DOMParser } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { Schema } from 'prosemirror-model';
-import { menuBar } from 'prosemirror-menu';
 import { fixTables } from 'prosemirror-tables';
 import { keymap } from 'prosemirror-keymap';
 import { Plugin } from "prosemirror-state";
@@ -13,11 +12,11 @@ import {
   inputRules, smartQuotes, emDash, ellipsis
 } from 'prosemirror-inputrules';
 
-import { buildMenuItems } from './ui';
-
 import nodeInstances from './addons/nodes/all';
 import markInstances from './addons/marks/all';
 import extensionInstances from './addons/extensions/all';
+
+import { menuBar, buildMenuItems } from './ui';
 
 import AddonManager from './utils/addon-manager';
 

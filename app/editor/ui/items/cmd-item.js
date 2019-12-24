@@ -1,4 +1,4 @@
-import { MenuItem } from 'prosemirror-menu';
+import { MenuItem } from './menu-item';
 
 export function cmdItem(cmd, options) {
   let passedOptions = {

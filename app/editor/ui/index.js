@@ -1,11 +1,22 @@
 import {
-  wrapItem, blockTypeItem, Dropdown, DropdownSubmenu, joinUpItem, liftItem,
-  undoItem, redoItem, MenuItem
-} from 'prosemirror-menu';
-import { linkItem, styleItem, insertImageItem,
-  markItem, wrapListItem
+  MenuItem,
+  Dropdown,
+  DropdownSubmenu,
+  wrapItem,
+  blockTypeItem,
+  joinUpItem,
+  liftItem,
+  undoItem,
+  redoItem,
+  linkItem,
+  styleItem,
+  insertImageItem,
+  markItem,
+  wrapListItem
 } from './items';
 import { icons } from './icons';
+
+export { menuBar } from './menubar';
 
 export function buildMenuItems(schema, addons) {
   let r = {}, type;

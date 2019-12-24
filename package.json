@@ -60,6 +60,7 @@
     "stylelint-config-standard": "^19.0.0"
   },
   "dependencies": {
+    "crel": "^4.2.0",
     "prosemirror-commands": "^1.0.7",
     "prosemirror-dropcursor": "^1.0.0",
     "prosemirror-example-setup": "^1.0.1",

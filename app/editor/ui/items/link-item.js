@@ -1,4 +1,4 @@
-import { MenuItem } from 'prosemirror-menu';
+import { MenuItem } from './menu-item';
 import { toggleMark } from 'prosemirror-commands';
 import { TextField, openPrompt } from './prompt';
 import { markActive } from '../../commands';

@@ -1,4 +1,4 @@
-import { MenuItem } from 'prosemirror-menu';
+import { MenuItem } from './menu-item';
 
 function isStyleActive(state, nodeType, attrs) {
   if (state.selection.empty) return false;

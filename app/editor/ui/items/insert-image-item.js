@@ -1,4 +1,4 @@
-import { MenuItem } from 'prosemirror-menu';
+import { MenuItem } from './menu-item';
 import { NodeSelection } from 'prosemirror-state';
 import { TextField, openPrompt } from './prompt';
 

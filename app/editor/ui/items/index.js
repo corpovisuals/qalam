@@ -1,3 +1,12 @@
+export { MenuItem } from './menu-item';
+export { Dropdown, DropdownSubmenu } from './dropdown';
+export { wrapItem } from './wrap-item';
+export { blockTypeItem } from './block-type-item';
+export { joinUpItem } from './join-up-item';
+export { liftItem } from './lift-item';
+export { undoItem } from './undo-item';
+export { redoItem } from './redo-item';
+export { selectParentNodeItem } from './select-parent-node-item';
 export { linkItem } from './link-item';
 export { styleItem } from './style-item';
 export { insertImageItem } from './insert-image-item';
