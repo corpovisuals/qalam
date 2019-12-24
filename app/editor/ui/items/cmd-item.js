@@ -1,4 +1,4 @@
-import { MenuItem } from './menu-item';
+import { MenuItem } from '../elements';
 
 export function cmdItem(cmd, options) {
   let passedOptions = {

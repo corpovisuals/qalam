@@ -1,5 +1,5 @@
 import { undo } from "prosemirror-history"
-import { MenuItem } from './menu-item';
+import { MenuItem } from '../elements';
 
 export let undoItem = new MenuItem({
   title: "Undo last change",

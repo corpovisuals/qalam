@@ -1,5 +1,5 @@
 import { lift } from 'prosemirror-commands';
-import { MenuItem } from './menu-item';
+import { MenuItem } from '../elements';
 
 export const liftItem = new MenuItem({
   title: "Lift out of enclosing block",

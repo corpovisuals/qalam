@@ -1,5 +1,5 @@
 import { wrapIn } from 'prosemirror-commands';
-import { MenuItem } from './menu-item';
+import { MenuItem } from '../elements';
 
 export function wrapItem(nodeType, options) {
   let passedOptions = {

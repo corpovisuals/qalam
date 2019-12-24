@@ -1,5 +1,5 @@
 import { redo } from 'prosemirror-history';
-import { MenuItem } from './menu-item';
+import { MenuItem } from '../elements';
 
 export let redoItem = new MenuItem({
   title: "Redo last undone change",

@@ -1,7 +1,13 @@
+import { Plugin } from 'prosemirror-state';
+
 import {
+  MenuBarView,
   MenuItem,
   Dropdown,
-  DropdownSubmenu,
+  DropdownSubmenu
+} from './elements';
+
+import {
   wrapItem,
   blockTypeItem,
   joinUpItem,
@@ -14,9 +20,29 @@ import {
   markItem,
   wrapListItem
 } from './items';
+
 import { icons } from './icons';
 
-export { menuBar } from './menubar';
+// :: (Object) → Plugin
+// A plugin that will place a menu bar above the editor. Note that
+// this involves wrapping the editor in an additional `<div>`.
+//
+//   options::-
+//   Supports the following options:
+//
+//     content:: [[MenuElement]]
+//     Provides the content of the menu, as a nested array to be
+//     passed to `renderGrouped`.
+//
+//     floating:: ?bool
+//     Determines whether the menu floats, i.e. whether it sticks to
+//     the top of the viewport when the editor is partially scrolled
+//     out of view.
+export function menuBar(options) {
+  return new Plugin({
+    view(editorView) { return new MenuBarView(editorView, options) }
+  })
+}
 
 export function buildMenuItems(schema, addons) {
   let r = {}, type;

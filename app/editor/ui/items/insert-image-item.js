@@ -1,6 +1,5 @@
-import { MenuItem } from './menu-item';
+import { MenuItem, TextField, openPrompt } from '../elements';
 import { NodeSelection } from 'prosemirror-state';
-import { TextField, openPrompt } from './prompt';
 
 function canInsert(state, nodeType) {
   let $from = state.selection.$from

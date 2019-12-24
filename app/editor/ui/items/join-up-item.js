@@ -1,4 +1,4 @@
-import { MenuItem } from './menu-item';
+import { MenuItem } from '../elements';
 import { joinUp } from 'prosemirror-commands';
 
 export const joinUpItem = new MenuItem({

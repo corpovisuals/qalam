@@ -1,4 +1,4 @@
-import { MenuItem } from './menu-item';
+import { MenuItem } from '../elements';
 
 function isStyleActive(state, nodeType, attrs) {
   if (state.selection.empty) return false;

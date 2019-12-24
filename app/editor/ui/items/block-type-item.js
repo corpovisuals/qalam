@@ -1,5 +1,5 @@
 import { setBlockType } from 'prosemirror-commands';
-import { MenuItem } from './menu-item';
+import { MenuItem } from '../elements';
 
 // :: (NodeType, Object) → MenuItem
 // Build a menu item for changing the type of the textblock around the
