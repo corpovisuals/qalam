@@ -21,15 +21,15 @@ export default class Paragraph extends Node {
     }
   }
 
-  keys({ type }) {
-    return {
-      'Shift-Ctrl-0': setBlockType(type)
-    }
-  }
-
   commands({ type }) {
     return {
       setStyle: (attrs) => setStyle(type, attrs)
+    }
+  }
+
+  keys({ type }) {
+    return {
+      'Shift-Ctrl-0': setBlockType(type)
     }
   }
 }

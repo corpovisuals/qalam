@@ -18,14 +18,14 @@ export default class Strong extends Mark {
     }
   }
 
+  commands({ type }) {
+    return () => toggleMark(type);
+  }
+
   keys({ type }) {
     return {
       'Mod-b': toggleMark(type),
       'Mod-B': toggleMark(type)
     }
-  }
-
-  commands({ type }) {
-    return () => toggleMark(type);
   }
 }

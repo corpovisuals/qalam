@@ -1,6 +1,7 @@
-import { wrapInList } from '../../commands';
 import { cmdItem } from './cmd-item';
 
-export function wrapListItem(nodeType, options) {
-  return cmdItem(wrapInList(nodeType, options.attrs), options)
+export function wrapListItem(commands) {
+  return (nodeType, options) => {
+    return cmdItem(commands[nodeType.name](options.attrs), options);
+  }
 }

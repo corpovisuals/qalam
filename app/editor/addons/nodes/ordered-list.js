@@ -21,6 +21,10 @@ export default class OrderedList extends Node {
     }
   }
 
+  commands({ type }) {
+    return (attrs) => wrapInList(type, attrs);
+  }
+
   keys({ type }) {
     return {
       'Shift-Ctrl-9': wrapInList(type)

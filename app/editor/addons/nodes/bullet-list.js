@@ -16,6 +16,10 @@ export default class BulletList extends Node {
     }
   }
 
+  commands({ type }) {
+    return (attrs) => wrapInList(type, attrs);
+  }
+
   keys({ type }) {
     return {
       'Shift-Ctrl-8': wrapInList(type)

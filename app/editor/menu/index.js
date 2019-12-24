@@ -40,14 +40,14 @@ export function buildMenuItems(schema, addons) {
   }
 
   if (type = schema.nodes.bullet_list) {
-    r.wrapBulletList = wrapListItem(type, {
+    r.wrapBulletList = apply(wrapListItem, type, {
       title: 'Wrap in bullet list',
       icon: icons.bulletList
     });
   }
 
   if (type = schema.nodes.ordered_list) {
-    r.wrapOrderedList = wrapListItem(type, {
+    r.wrapOrderedList = apply(wrapListItem, type, {
       title: 'Wrap in ordered list',
       icon: icons.orderedList
     });

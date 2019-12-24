@@ -13,14 +13,14 @@ export default class Em extends Mark {
     }
   }
 
+  commands({ type }) {
+    return () => toggleMark(type);
+  }
+
   keys({ type }) {
     return {
       'Mod-i': toggleMark(type),
       'Mod-I': toggleMark(type)
     }
-  }
-
-  commands({ type }) {
-    return () => toggleMark(type);
   }
 }
