@@ -7,7 +7,7 @@ function markActive(state, type) {
   else return state.doc.rangeHasMark(from, to, type)
 }
 
-export default function (type) {
+export default function(type) {
   return (state, dispatch, view) => {
     if (markActive(state, type)) {
       toggleMark(type)(state, dispatch)

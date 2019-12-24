@@ -1,10 +1,19 @@
 import Node from '../types/node';
-import { wrapInList } from 'prosemirror-schema-list';
+import { wrapInList } from '../../commands';
 import { wrappingInputRule } from 'prosemirror-inputrules';
 
 export default class BulletList extends Node {
   get name() {
     return 'bullet_list';
+  }
+
+  get schema() {
+    return {
+      content: 'list_item+',
+      group: 'block',
+      parseDOM: [{tag: "ul"}],
+      toDOM() { return ["ul", 0] }
+    }
   }
 
   keys({ type }) {

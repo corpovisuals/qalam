@@ -1,4 +1,4 @@
-export default function (nodeType, attrs) {
+export default function(nodeType, attrs) {
   return (state, dispatch) => {
     if (state.selection.empty) return false;
     let { from, to } = state.selection;

@@ -1,7 +1,7 @@
 import { NodeSelection } from 'prosemirror-state';
 import { TextField, openPrompt } from './prompt';
 
-export default function (nodeType) {
+export default function(nodeType) {
   return (state, _, view) => {
     let {from, to} = state.selection, attrs = null
 

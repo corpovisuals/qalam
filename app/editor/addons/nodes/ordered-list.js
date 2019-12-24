@@ -1,10 +1,24 @@
 import Node from '../types/node';
-import { wrapInList } from 'prosemirror-schema-list';
+import { wrapInList } from '../../commands';
 import { wrappingInputRule } from 'prosemirror-inputrules';
 
 export default class OrderedList extends Node {
   get name() {
     return 'ordered_list';
+  }
+
+  get schema() {
+    return {
+      attrs: {order: {default: 1}},
+      content: 'list_item+',
+      group: 'block',
+      parseDOM: [{tag: "ol", getAttrs(dom) {
+        return {order: dom.hasAttribute("start") ? +dom.getAttribute("start") : 1}
+      }}],
+      toDOM(node) {
+        return node.attrs.order == 1 ? ["ol", 0] : ["ol", {start: node.attrs.order}, 0]
+      }
+    }
   }
 
   keys({ type }) {

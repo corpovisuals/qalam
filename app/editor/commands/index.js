@@ -12,6 +12,10 @@ import addLink from './add-link';
 import insertImage from './insert-image';
 import setStyle from './set-style';
 import createTable from './create-table';
+import wrapInList from './wrap-in-list';
+import splitListItem from './split-list-item';
+import liftListItem from './lift-list-item';
+import sinkListItem from './sink-list-item';
 
 export {
   // prosemirror-commands
@@ -33,5 +37,9 @@ export {
   addLink,
   insertImage,
   setStyle,
-  createTable
+  createTable,
+  wrapInList,
+  splitListItem,
+  liftListItem,
+  sinkListItem
 };

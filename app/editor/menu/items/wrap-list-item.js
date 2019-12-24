@@ -1,4 +1,4 @@
-import { wrapInList } from 'prosemirror-schema-list';
+import { wrapInList } from '../../commands';
 import { cmdItem } from './cmd-item';
 
 export function wrapListItem(nodeType, options) {

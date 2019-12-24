@@ -5,7 +5,6 @@ import { Schema } from 'prosemirror-model';
 import { inputRules, smartQuotes, emDash, ellipsis} from 'prosemirror-inputrules';
 import { menuBar } from 'prosemirror-menu';
 import { fixTables } from 'prosemirror-tables';
-import { addListNodes } from 'prosemirror-schema-list';
 import { buildMenuItems } from './menu';
 import plugins from './plugins';
 
@@ -70,15 +69,7 @@ export class Editor {
     let nodes = this.createNodes();
     let marks = this.createMarks();
 
-    const baseSchema = new Schema({nodes, marks});
-
-    return new Schema({
-      nodes: addListNodes(
-        baseSchema.spec.nodes, 'paragraph block*', 'block'
-      ),
-
-      marks: baseSchema.spec.marks
-    });
+    return new Schema({ nodes, marks });
   }
 
   createState() {
