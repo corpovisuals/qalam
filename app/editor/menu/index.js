@@ -26,14 +26,14 @@ export function buildMenuItems(schema, addons) {
   }
 
   if (type = schema.marks.link) {
-    r.toggleLink = apply(linkItem, type, {
+    r.toggleLink = linkItem(type, {
       title: 'Add or remove link',
       icon: icons.link
     });
   }
 
   if (type = schema.nodes.image) {
-    r.insertImage = apply(insertImageItem, type, {
+    r.insertImage = insertImageItem(type, {
       title: 'Insert image',
       label: 'Image'
     });

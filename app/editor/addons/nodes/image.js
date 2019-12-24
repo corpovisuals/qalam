@@ -1,5 +1,4 @@
 import Node from '../types/node';
-import { insertImage } from '../../commands'
 
 export default class Image extends Node {
   get name() {
@@ -25,9 +24,5 @@ export default class Image extends Node {
       }}],
       toDOM(node) { let {src, alt, title} = node.attrs; return ["img", {src, alt, title}] }
     }
-  }
-
-  commands({ type }) {
-    return () => insertImage(type);
   }
 }

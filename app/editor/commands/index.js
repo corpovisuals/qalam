@@ -8,8 +8,7 @@ import {
   toggleHeaderCell, deleteTable
 } from 'prosemirror-tables';
 
-import addLink from './add-link';
-import insertImage from './insert-image';
+import markActive from './mark-active';
 import setStyle from './set-style';
 import createTable from './create-table';
 import wrapInList from './wrap-in-list';
@@ -34,8 +33,7 @@ export {
   deleteTable,
 
   // custom
-  addLink,
-  insertImage,
+  markActive,
   setStyle,
   createTable,
   wrapInList,
