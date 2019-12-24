@@ -5,7 +5,7 @@ import { Schema } from 'prosemirror-model';
 import { inputRules, smartQuotes, emDash, ellipsis} from 'prosemirror-inputrules';
 import { menuBar } from 'prosemirror-menu';
 import { fixTables } from 'prosemirror-tables';
-import { buildMenuItems } from './menu';
+import { buildMenuItems } from './ui';
 import plugins from './plugins';
 
 import nodeInstances from './addons/nodes/all';
