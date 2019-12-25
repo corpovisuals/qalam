@@ -1,40 +1,5 @@
 @import './settings/variables';
 @import 'vendors/all';
 @import 'base/elements';
+@import './qalam';
 @import 'modules';
-
-.ProseMirror {
-  padding: 15px;
-}
-
-.ProseMirror:focus {
-  outline: none;
-}
-
-.ProseMirror-menubar,
-.ProseMirror-menuitem {
-  display: flex;
-  align-items: center;
-}
-
-.ProseMirror th,
-.ProseMirror td {
-  min-width: 1em;
-  border: 1px solid #ddd;
-  padding: 3px 5px;
-}
-
-/* stylelint-disable selector-max-class */
-.ProseMirror .tableWrapper {
-  margin: 1em 0;
-}
-/* stylelint-enable selector-max-class */
-
-.ProseMirror th {
-  font-weight: bold;
-  text-align: left;
-}
-
-.ProseMirror table p {
-  margin-top: 1rem;
-}
