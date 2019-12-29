@@ -1,5 +1,5 @@
 import { MenuItem } from '../elements';
-import { joinUp } from 'prosemirror-commands';
+import { joinUp } from '../../commands';
 
 export const joinUpItem = new MenuItem({
   title: "Join with above block",

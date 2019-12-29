@@ -1,6 +1,5 @@
 import Node from '../types/node';
-import { setBlockType } from 'prosemirror-commands';
-import { setStyle } from '../../commands';
+import { setStyle, setBlockType } from '../../commands';
 
 export default class Paragraph extends Node {
   get name() {

@@ -1,4 +1,4 @@
-import { selectParentNode } from 'prosemirror-commands';
+import { selectParentNode } from '../../commands';
 import { MenuItem } from '../elements';
 
 export const selectParentNodeItem = new MenuItem({

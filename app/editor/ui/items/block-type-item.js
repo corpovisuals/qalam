@@ -1,4 +1,4 @@
-import { setBlockType } from 'prosemirror-commands';
+import { setBlockType } from '../../commands';
 import { MenuItem } from '../elements';
 
 // :: (NodeType, Object) → MenuItem

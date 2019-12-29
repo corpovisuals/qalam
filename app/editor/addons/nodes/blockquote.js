@@ -1,6 +1,6 @@
 import Node from '../types/node';
 import { wrappingInputRule } from 'prosemirror-inputrules';
-import { wrapIn } from 'prosemirror-commands';
+import { wrapIn } from '../../commands';
 
 export default class Blockquote extends Node {
   get name() {

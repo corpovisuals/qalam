@@ -1,4 +1,4 @@
-import { wrapIn } from 'prosemirror-commands';
+import { wrapIn } from '../../commands';
 import { MenuItem } from '../elements';
 
 export function wrapItem(nodeType, options) {

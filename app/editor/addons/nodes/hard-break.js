@@ -1,5 +1,6 @@
 import Node from '../types/node';
-import { chainCommands, exitCode } from 'prosemirror-commands';
+import { chainCommands } from 'prosemirror-commands';
+import { exitCode } from '../../commands';
 
 export default class HardBreak extends Node {
   get name() {

@@ -1,4 +1,4 @@
-import { lift } from 'prosemirror-commands';
+import { lift } from '../../commands';
 import { MenuItem } from '../elements';
 
 export const liftItem = new MenuItem({

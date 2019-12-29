@@ -1,5 +1,12 @@
 import {
-  toggleMark
+  toggleMark,
+  setBlockType,
+  wrapIn,
+  selectParentNode,
+  joinUp,
+  lift,
+  exitCode,
+  joinDown
 } from 'prosemirror-commands';
 
 import {
@@ -19,6 +26,13 @@ import sinkListItem from './sink-list-item';
 export {
   // prosemirror-commands
   toggleMark,
+  setBlockType,
+  wrapIn,
+  selectParentNode,
+  joinUp,
+  lift,
+  exitCode,
+  joinDown,
   addColumnAfter,
   addColumnBefore,
   deleteColumn,

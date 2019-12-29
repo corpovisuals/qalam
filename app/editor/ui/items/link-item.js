@@ -1,6 +1,5 @@
 import { MenuItem, TextField, openPrompt } from '../elements';
-import { toggleMark } from 'prosemirror-commands';
-import { markActive } from '../../commands';
+import { markActive, toggleMark } from '../../commands';
 
 export function linkItem(markType, options) {
   let passedOptions = {

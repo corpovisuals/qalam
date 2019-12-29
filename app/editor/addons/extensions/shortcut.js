@@ -1,5 +1,5 @@
 import Extension from '../types/extension';
-import { joinUp, joinDown, lift, selectParentNode } from 'prosemirror-commands';
+import { joinUp, joinDown, lift, selectParentNode } from '../../commands';
 import { undoInputRule } from 'prosemirror-inputrules';
 
 export default class Shortcut extends Extension {

@@ -1,5 +1,5 @@
 import Node from '../types/node';
-import { setBlockType } from 'prosemirror-commands';
+import { setBlockType } from '../../commands';
 import { textblockTypeInputRule } from 'prosemirror-inputrules';
 
 export default class Heading extends Node {
