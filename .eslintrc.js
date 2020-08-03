@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -19,7 +21,6 @@ module.exports = {
     browser: true
   },
   rules: {
-    'ember/no-jquery': 'error',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
   },
   overrides: [
@@ -43,13 +44,12 @@ module.exports = {
         node: true
       },
       plugins: ['node'],
-      rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
-        // add your custom rules and overrides for node files here
-
+      extends: ['plugin:node/recommended'],
+      rules: {
         // this can be removed once the following is fixed
         // https://github.com/mysticatea/eslint-plugin-node/issues/77
         'node/no-unpublished-require': 'off'
-      })
+      }
     }
   ]
 };
