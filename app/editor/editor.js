@@ -96,7 +96,7 @@ export class Editor {
         keymap(baseKeymap),
         dropCursor(),
         gapCursor(),
-        menuBar({ content: buildMenuItems(this.schema, this.addons).fullMenu }),
+        menuBar({ content: buildMenuItems(this.schema, this.addons, this.options).fullMenu }),
         new Plugin({
           props: {
             attributes: {class: "ProseMirror-example-setup-style"}

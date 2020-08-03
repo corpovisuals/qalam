@@ -44,7 +44,7 @@ export function menuBar(options) {
   })
 }
 
-export function buildMenuItems(schema, addons) {
+export function buildMenuItems(schema, addons, options) {
   let r = {}, type;
   let commands = addons.commands({ schema });
 
@@ -72,7 +72,8 @@ export function buildMenuItems(schema, addons) {
   if (type = schema.nodes.image) {
     r.insertImage = insertImageItem(type, {
       title: 'Insert image',
-      label: 'Image'
+      label: 'Image',
+      onImagePrompt: options.onImagePrompt
     });
   }
 
