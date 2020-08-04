@@ -72,9 +72,8 @@ export function buildMenuItems(schema, addons, options) {
   if (type = schema.nodes.image) {
     r.insertImage = insertImageItem(type, {
       title: 'Insert image',
-      label: 'Image',
-      onImagePrompt: options.onImagePrompt
-    });
+      label: 'Image'
+    }, options);
   }
 
   if (type = schema.nodes.bullet_list) {

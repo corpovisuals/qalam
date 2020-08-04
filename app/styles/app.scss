@@ -1,5 +1,7 @@
 @import './settings/variables';
 @import 'vendors/all';
 @import 'base/elements';
+@import 'ember-modal-dialog/ember-modal-structure';
+@import 'ember-modal-dialog/ember-modal-appearance';
 @import './qalam';
 @import 'modules';

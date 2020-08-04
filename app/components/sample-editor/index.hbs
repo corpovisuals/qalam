@@ -56,7 +56,12 @@
         </tbody>
       </table>
     </div>
+
+    {{#if this.showImageGallery}}
+      <ImageGallery @close={{this.closeImageGallery}} />
+    {{/if}}
   </div>
+
 
   <pre local-class="output">
   </pre>

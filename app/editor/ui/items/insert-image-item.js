@@ -9,14 +9,14 @@ function canInsert(state, nodeType) {
   return false
 }
 
-export function insertImageItem(nodeType, options) {
+export function insertImageItem(nodeType, attrs, options) {
   let passedOptions = {
     enable(state) { return canInsert(state, nodeType) },
     run(state, _, view) {
-      options.onImagePrompt({ nodeType, state, view });
+      options.onImagePrompt.call(options.instance, { nodeType, state, view });
     }
   };
 
-  for (let prop in options) passedOptions[prop] = options[prop];
+  for (let prop in attrs) passedOptions[prop] = attrs[prop];
   return new MenuItem(passedOptions);
 }
