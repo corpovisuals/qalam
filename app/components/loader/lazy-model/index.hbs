@@ -1,0 +1,14 @@
+<div
+  {{did-insert this.load this}}
+  {{did-update this.load this @params}}
+>
+  {{#if this.loadResources.isRunning}}
+    {{#if this.spinner}}
+      {{yield (hash Loading=(component 'loader/lazy-model/spinner' height=@height width=@width ))}}
+    {{/if}}
+  {{else}}
+    <div local-class="content">
+      {{yield (hash Loaded=(component 'loader/lazy-model/loaded' resources=this.loadResources.lastSuccessful.value))}}
+    </div>
+  {{/if}}
+</div>

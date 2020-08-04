@@ -7,6 +7,10 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
 
+    HOST_NAME: 'http://localhost:4200',
+    STATIC_HOST_NAME: 'http://localhost:4200',
+    STORAGE_ENDPOINT: 'http://localhost:3000',
+
     fontawesome: {
       icons: {
         'free-solid-svg-icons': [

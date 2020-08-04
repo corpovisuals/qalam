@@ -1,11 +1,12 @@
 /* theme colors */
-@value theme-color-1: #591731;
-@value theme-color-2: #641E39;
-@value theme-color-3: #FCEDCC;
-@value theme-color-4: #EDBC93;
-@value theme-color-5: #EFA160;
+@value theme-color-1: #153e5c;
+@value theme-color-2: #0d799c;
+@value theme-color-3: #87aeb4;
+@value theme-color-4: #cdd4ca;
+@value theme-color-5: #f2be54;
 
 /* supporting colors */
+@value link-color: #1f6698;
 @value success-color: #12a16d;
 @value danger-color: #a12f1f;
 @value white-color: #fff;
@@ -15,11 +16,12 @@
 @value emphasized-color: #4a4a4a;
 @value shaded-color: #808080;
 @value shadow-color: rgba(0, 0, 0, 0.16);
+@value text-color: #212529;
 @value placeholder-color: #cdd4ca;
 
 /* social share */
 @value facebook: #3b5998;
 @value twitter: #00b6f1;
+@value google-plus: #df4a32;
 @value reddit: #ff5700;
 @value email: #C8CB2B;
-@value linkedin: #2867B2;

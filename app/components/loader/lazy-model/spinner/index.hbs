@@ -1,0 +1,11 @@
+{{#if hasBlock}}
+  <div local-class="spinner-wrapper">
+    {{yield (hash Spinner=(component 'utils/loader-dualball'))}}
+  </div>
+{{else}}
+  <Responsive::Content @width={{@width}} @height={{@height}}>
+    <div local-class="spinner-wrapper">
+      <Utils::LoaderDualball />
+    </div>
+  </Responsive::Content>
+{{/if}}

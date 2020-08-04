@@ -1,11 +1,13 @@
 /* theme colors */
-$theme-color-1: #591731;
-$theme-color-2: #641E39;
-$theme-color-3: #FCEDCC;
-$theme-color-4: #EDBC93;
-$theme-color-5: #EFA160;
+$theme-color-1: #153e5c;
+$theme-color-2: #0d799c;
+$theme-color-3: #87aeb4;
+$theme-color-4: #cdd4ca;
+$theme-color-5: #f2be54;
 
 /* supporting colors */
+$link-color: #1f6698;
+$default-font-color: #333;
 $success-color: #12a16d;
 $danger-color: #a12f1f;
 $white-color: #fff;
@@ -15,10 +17,8 @@ $grey-color: #585858;
 $emphasized-color: #4a4a4a;
 $shaded-color: #808080;
 $shadow-color: rgba(0, 0, 0, 0.16);
+$text-color: #212529;
 $placeholder-color: #cdd4ca;
-
-$default-font-color: #333;
-$default-image-color: #d6d6d6;
 
 /* fonts */
 $serif: 'FreeSerif/Regular', 'Times New Roman', Georgia, Cambria, Times, serif;

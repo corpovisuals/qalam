@@ -4,6 +4,26 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
+    babel: {
+      plugins: [
+        require('ember-auto-import/babel-plugin')
+      ]
+    },
+
+    autoImport: {
+      forbidEval: true,
+      alias: {
+        'lodash.isdefault': 'lodash.isdefault/index',
+        'lodash.isplainobject': 'lodash.isplainobject/index'
+      }
+
+      // webpack: {
+      //   plugins: [
+      //     new (require("webpack-bundle-analyzer")).BundleAnalyzerPlugin()
+      //   ]
+      // }
+    },
+
     cssModules: {
       intermediateOutputPath: 'app/styles/_modules.scss',
       reporter: {
