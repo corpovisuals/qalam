@@ -14,7 +14,9 @@ module.exports = function(defaults) {
       forbidEval: true,
       alias: {
         'lodash.isdefault': 'lodash.isdefault/index',
-        'lodash.isplainobject': 'lodash.isplainobject/index'
+        'lodash.inrange': 'lodash.inrange/index',
+        'lodash.isplainobject': 'lodash.isplainobject/index',
+        'lodash.pick': 'lodash.pick/index'
       }
 
       // webpack: {
@@ -59,6 +61,15 @@ module.exports = function(defaults) {
           }
         ]
       }
+    },
+
+    'ember-bootstrap': {
+      bootstrapVersion: 4,
+      importBootstrapFont: false,
+      importBootstrapCSS: false,
+      whitelist: [
+        'bs-progress'
+      ]
     },
   });
 

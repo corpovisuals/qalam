@@ -1,0 +1,23 @@
+<ValidatedForm
+  @model={{changeset this.embedPhoto this.validations}}
+  @on-submit={{this.submit}} as |f|
+>
+  <f.input @label="Caption" @name="caption" />
+  <f.input @label="Credit" @name="credit" />
+
+  <div class="form-group">
+    <f.input @label="Image" @name="image" @type="file" as |fi|>
+      <Inputs::Image
+        @name="image"
+        @value={{fi.value}}
+        @imageRequirements={{this.imageRequirements}}
+        @onUpdate={{fi.update}}
+        @onBlur={{fi.setDirty}}
+      />
+    </f.input>
+  </div>
+
+  <f.submit>
+    <Button::Save @form={{f}} />
+  </f.submit>
+</ValidatedForm>

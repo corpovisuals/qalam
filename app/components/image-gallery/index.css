@@ -1,4 +1,29 @@
 .container {
   width: 50vw;
   height: 50vh;
+  overflow-y: scroll;
+}
+
+.title {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form {
+  padding: 10px;
+  width: 60%;
+}
+
+.list {
+  width: 40%;
+  padding: 10px;
+}
+
+.item {
+  margin-bottom: 5px;
 }

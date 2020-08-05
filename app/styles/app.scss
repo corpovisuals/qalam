@@ -3,5 +3,28 @@
 @import 'base/elements';
 @import 'ember-modal-dialog/ember-modal-structure';
 @import 'ember-modal-dialog/ember-modal-appearance';
+
+.image-cropper {
+  img {
+    width: 100%;
+  }
+}
+
+/* ember-img-lazy */
+.img-lazy--loading {
+  background-color: $theme-color-4;
+  height: 100%;
+}
+
+.img-lazy--loaded {
+  background-image: none;
+  animation: none;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
 @import './qalam';
 @import 'modules';

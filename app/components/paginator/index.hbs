@@ -1,0 +1,13 @@
+<div {{did-update this.scrollBack this @page}}></div>
+
+{{yield}}
+
+{{#if (gt @totalPages 1)}}
+  <div ...attributes local-class={{if @centered "paginator center" "paginator"}}>
+    <PaginationPager
+      @count={{@totalPages}}
+      @current={{@page}}
+      @change={{@change}}
+    />
+  </div>
+{{/if}}

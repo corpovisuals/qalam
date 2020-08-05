@@ -11,6 +11,10 @@ module.exports = function(environment) {
     STATIC_HOST_NAME: 'http://localhost:4200',
     STORAGE_ENDPOINT: 'http://localhost:3000',
 
+    'ember-validated-form': {
+      theme: 'bootstrap'
+    },
+
     fontawesome: {
       icons: {
         'free-solid-svg-icons': [

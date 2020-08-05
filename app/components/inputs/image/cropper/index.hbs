@@ -1,0 +1,20 @@
+{{#if this.previewSrc}}
+  <ImageCropper
+    @source={{this.previewSrc}}
+    @options={{hash aspectRatio=this.aspectRatio viewMode=1 zoomable=false
+    }} as |cropper|
+  >
+    {{cropper.on "ready" this.ready}}
+    {{cropper.on "crop" this.crop}}
+  </ImageCropper>
+{{else if @prevImage}}
+  <div local-class="image-container">
+    <Image
+      @image={{@prevImage}}
+      @attr={{@name}}
+      @lazy={{false}}
+      @vwset={{hash hd="30vw" lg="40vw" md="40vw" sm="40vw" xs="40vw"}}
+      @imgClassNames="img-responsive"
+    />
+  </div>
+{{/if}}

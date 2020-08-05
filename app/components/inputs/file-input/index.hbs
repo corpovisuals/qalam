@@ -1,0 +1,33 @@
+<div>
+  {{yield
+    (hash
+      input=(component
+        "inputs/file-input/file-uploader"
+        uploadEndpoint=@uploadEndpoint
+        fileRequirements=@fileRequirements
+        onUpdate=@onUpdate
+        beforeUpload=this.beforeUploadHook
+        onUploadProgress=this.onProgress
+        onFileError=this.onFileError
+      )
+    )
+  }}
+
+  {{#if this.isShowingErrorDialog}}
+    <ModalDialog @translucentOverlay={{true}} @onClose={{this.closeDialog}}>
+      <p>
+        {{this.errorMessage}}
+      </p>
+
+      <hr>
+
+      <div local-class="buttons">
+        <div local-class="pull-right">
+          <button type="button" class="btn btn-primary" {{on "click" this.closeDialog}}>
+            Ok
+          </button>
+        </div>
+      </div>
+    </ModalDialog>
+  {{/if}}
+</div>

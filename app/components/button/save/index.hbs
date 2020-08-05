@@ -1,0 +1,6 @@
+{{#if @form.loading}}
+  <FaIcon @icon="spinner" @spin={{true}} />
+  <span class="ml-1">{{this.loadingLabel}}</span>
+{{else}}
+  {{this.label}}
+{{/if}}

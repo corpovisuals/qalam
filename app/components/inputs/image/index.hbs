@@ -1,0 +1,27 @@
+<Inputs::FileInput
+  @uploadEndpoint={{this.uploadEndpoint}}
+  @fileRequirements={{@imageRequirements}}
+  @onUpdate={{this.update}}
+  @beforeUpload={{this.beforeUpload}}
+  @onUploadProgress={{fn (mut this.progressValue)}} as |f|
+>
+  <Inputs::Image::Cropper
+    @prevImage={{@value}}
+    @name={{@name}}
+    @newImage={{this.newImage}}
+    @imageRequirements={{@imageRequirements}}
+    @update={{this.updateMeta}}
+  />
+
+  {{#if this.progressValue}}
+    <div class="my-2">
+      <Utils::ProgressBar @value={{this.progressValue}} />
+    </div>
+  {{/if}}
+
+  {{f.input}}
+
+  <div local-class="hint">
+    {{concat "Min width: " @imageRequirements.minWidth "px, height: " @imageRequirements.minHeight "px"}}
+  </div>
+</Inputs::FileInput>

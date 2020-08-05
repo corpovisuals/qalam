@@ -1,0 +1,7 @@
+.buttons {
+  composes: pull-container from 'qalam/styles/generic/position';
+}
+
+.pull-right {
+  composes: pull-right from 'qalam/styles/generic/position';
+}

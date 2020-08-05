@@ -3,24 +3,36 @@
   @onClose={{@close}}
 >
   <div local-class="container">
-    <h4>Image Gallery</h4>
+    <h4 local-class="title">Image Gallery</h4>
 
-    <div>
-      <Loader::LazyModel
-        @model="embedPhoto"
-        @width={{500}}
-        @height={{150}} as |lazy|
-      >
-        <lazy.Loading as |l|>
-          <l.Spinner />
-        </lazy.Loading>
+    <div local-class="wrapper">
+      <div local-class="form">
+        <ImageGallery::Form />
+      </div>
 
-        <lazy.Loaded as |resources|>
-          {{#each resources as |image|}}
-            <div>{{image.caption}}</div>
-          {{/each}}
-        </lazy.Loaded>
-      </Loader::LazyModel>
+      <div local-class="list">
+        <Loader::LazyModel
+          @model="embedPhoto"
+          @width={{500}}
+          @height={{150}} as |lazy|
+        >
+          <lazy.Loading as |l|>
+            <l.Spinner />
+          </lazy.Loading>
+
+          <lazy.Loaded as |resources|>
+            {{#each resources as |image|}}
+              <div local-class="item">
+                <Responsive::Image
+                  @model={{image}}
+                  @vwset={{hash hg="20vw" bg="20vw" xl="23vw" hd="23vw" lg="28vw" sm="50vw" xs="50vw"}}
+                  @alt={{image.caption}}
+                />
+              </div>
+            {{/each}}
+          </lazy.Loaded>
+        </Loader::LazyModel>
+      </div>
     </div>
   </div>
 </ModalDialog>

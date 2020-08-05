@@ -1,0 +1,7 @@
+.paginator {
+  margin-bottom: 40px;
+}
+
+.center {
+  composes: center from 'qalam/styles/generic/position';
+}

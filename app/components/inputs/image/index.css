@@ -1,0 +1,8 @@
+@value grey-color from 'qalam/styles/settings/colors';
+@value sm-font-size from 'qalam/styles/settings/typography';
+
+.hint {
+  color: grey-color;
+  font-size: rfs(sm-font-size);
+  margin-top: 2px;
+}

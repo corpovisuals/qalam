@@ -1,0 +1,19 @@
+{{#if this.src}}
+  {{#if this.lazy}}
+    <ImgLazy
+      @src={{this.src}}
+      @srcset={{this.srcset}}
+      @sizes={{this.sizes}}
+      @alt={{@alt}}
+      @classNames={{@imgClassNames}}
+    />
+  {{else}}
+    <img
+      src={{this.src}}
+      srcset={{this.srcset}}
+      sizes={{this.sizes}}
+      alt={{@alt}}
+      class={{@imgClassNames}}
+    >
+  {{/if}}
+{{/if}}
