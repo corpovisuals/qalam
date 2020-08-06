@@ -16,7 +16,10 @@ module.exports = function(defaults) {
         'lodash.isdefault': 'lodash.isdefault/index',
         'lodash.inrange': 'lodash.inrange/index',
         'lodash.isplainobject': 'lodash.isplainobject/index',
-        'lodash.pick': 'lodash.pick/index'
+        'lodash.omit': 'lodash.omit/index',
+        'lodash.pick': 'lodash.pick/index',
+        'lodash.random': 'lodash.random/index',
+        'lodash.sample': 'lodash.sample/index'
       }
 
       // webpack: {
