@@ -77,6 +77,26 @@ export function canShowRandom({ image }) {
   );
 }
 
+export function generateSrc({ model, attr, image }) {
+  let imageValue = image || get(model, attr);
+  let checkImg = imageValue?.original;
+
+  if (checkImg) {
+    let canonicalImg = canonicalImage(model, attr, imageValue);
+
+    if (canonicalImg) {
+      let staticHost = ENV.STATIC_HOST_NAME || ENV.STORAGE_ENDPOINT;
+      return `${staticHost}/uploads/${canonicalImg.storage}/${canonicalImg.id}`;
+    }
+  } else if (canShowRandom({ image: imageValue })) {
+    return randomImage({ image: imageValue });
+  } else if (model && attr) {
+    return placeholderImage({ model, attr });
+  } else {
+    return '';
+  }
+}
+
 export function generateSizes(vwset = {}) {
   let breakpoints = {
     xs: { max: '575px' },

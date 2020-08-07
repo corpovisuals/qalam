@@ -2,8 +2,11 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { get, action } from '@ember/object';
 import { Editor } from 'qalam/editor';
-import { imageSrc } from 'qalam/helpers/image-src';
-import { generateSizes, generateSrcset } from 'qalam/utils/image-utils';
+import {
+  generateSrc,
+  generateSrcset,
+  generateSizes
+} from 'qalam/utils/image-utils';
 
 export default class SampleEditor extends Component {
   @tracked editorStates = {}
@@ -36,8 +39,10 @@ export default class SampleEditor extends Component {
 
   @action
   insertImage({ nodeType, view }, image) {
+    this.showImageGallery = false;
+
     let attrs = {
-      src: imageSrc(null, { model: image, attr: 'image' }),
+      src: generateSrc({ model: image, attr: 'image' }),
       srcset: generateSrcset(get(image, 'image')),
       sizes: generateSizes(),
       alt: image.caption,
