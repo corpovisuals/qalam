@@ -1,15 +1,14 @@
 import Component from '@glimmer/component';
 import { get, computed } from '@ember/object';
 import defaultTo from 'lodash.defaultto';
-import ENV from '../../config/environment';
 import { imageSrc } from 'qalam/helpers/image-src';
-import { generateSizes } from 'qalam/utils/image-utils';
+import { generateSizes, generateSrcset } from 'qalam/utils/image-utils';
 
 export default class ImageElement extends Component {
   lazy = defaultTo(this.args.lazy, true)
   attr = defaultTo(this.args.attr, 'image')
 
-  @computed
+  @computed('args.{image,model}', 'attr')
   get imageValue() {
     return this.args.image || get(this.args.model, this.attr);
   }
@@ -29,26 +28,6 @@ export default class ImageElement extends Component {
   }
 
   get srcset() {
-    let image = this.imageValue;
-    let checkImg = image?.original;
-
-    if (checkImg) {
-      let srcs = '';
-      let staticHost = ENV.STATIC_HOST_NAME || ENV.STORAGE_ENDPOINT;
-
-      Object.keys(image).filter(w => w !== 'original').forEach((width, index) => {
-        let img = image[width];
-
-        if (index > 0) {
-          srcs += ', ';
-        }
-
-        srcs += `${staticHost}/uploads/${img.storage}/${img.id} ${width}w`;
-      });
-
-      return srcs;
-    } else {
-      return null;
-    }
+    return generateSrcset(this.imageValue);
   }
 }

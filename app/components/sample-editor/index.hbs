@@ -58,7 +58,10 @@
     </div>
 
     {{#if this.showImageGallery}}
-      <ImageGallery @close={{this.closeImageGallery}} />
+      <ImageGallery
+        @close={{this.closeImageGallery}}
+        @insert={{fn this.insertImage this.editorStates}}
+      />
     {{/if}}
   </div>
 

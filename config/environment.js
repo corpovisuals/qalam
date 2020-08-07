@@ -9,7 +9,7 @@ module.exports = function(environment) {
 
     HOST_NAME: 'http://localhost:4200',
     STATIC_HOST_NAME: 'http://localhost:4200',
-    STORAGE_ENDPOINT: 'http://localhost:3000',
+    STORAGE_ENDPOINT: 'http://localhost:4200',
 
     'ember-validated-form': {
       theme: 'bootstrap'

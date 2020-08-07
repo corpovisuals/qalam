@@ -21,13 +21,20 @@
           </lazy.Loading>
 
           <lazy.Loaded as |resources|>
-            {{#each resources as |image|}}
+            {{#each resources as |photo|}}
               <div local-class="item">
                 <Responsive::Image
-                  @model={{image}}
+                  @model={{photo}}
                   @vwset={{hash hg="20vw" bg="20vw" xl="23vw" hd="23vw" lg="28vw" sm="50vw" xs="50vw"}}
-                  @alt={{image.caption}}
+                  @alt={{photo.caption}}
                 />
+
+                <button
+                  {{on "click" (fn @insert photo)}}
+                  class="btn btn-primary"
+                >
+                  Insert
+                </button>
               </div>
             {{/each}}
           </lazy.Loaded>

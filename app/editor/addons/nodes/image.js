@@ -10,19 +10,30 @@ export default class Image extends Node {
       inline: true,
       attrs: {
         src: {},
-        alt: {default: null},
-        title: {default: null}
+        srcset: { default: null },
+        sizes: { default: null },
+        alt: { default: null },
+        title: { default: null },
+        classNames: { default: null },
+        style: { default: null }
       },
       group: "inline",
       draggable: true,
       parseDOM: [{tag: "img[src]", getAttrs(dom) {
         return {
           src: dom.getAttribute("src"),
+          srcset: dom.getAttribute("srcset"),
+          sizes: dom.getAttribute("sizes"),
+          alt: dom.getAttribute("alt"),
           title: dom.getAttribute("title"),
-          alt: dom.getAttribute("alt")
+          classNames: dom.getAttribute("class"),
+          style: dom.getAttribute("style")
         }
       }}],
-      toDOM(node) { let {src, alt, title} = node.attrs; return ["img", {src, alt, title}] }
+      toDOM(node) {
+        let { src, srcset, sizes, alt, title, classNames, style } = node.attrs;
+        return ["img", { src, srcset, sizes, alt, title, class: classNames, style }];
+      }
     }
   }
 }

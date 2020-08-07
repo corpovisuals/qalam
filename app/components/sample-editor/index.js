@@ -1,11 +1,12 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
+import { get, action } from '@ember/object';
 import { Editor } from 'qalam/editor';
-// import { NodeSelection } from 'prosemirror-state';
-// import { TextField, openPrompt } from './prompt';
+import { imageSrc } from 'qalam/helpers/image-src';
+import { generateSizes, generateSrcset } from 'qalam/utils/image-utils';
 
 export default class SampleEditor extends Component {
+  @tracked editorStates = {}
   @tracked showImageGallery = false
 
   setupEditor(element, [instance]) {
@@ -28,26 +29,23 @@ export default class SampleEditor extends Component {
     }
   }
 
-  onImagePrompt({ nodeType, state, view }) {
+  onImagePrompt(states) {
+    this.editorStates = states;
     this.showImageGallery = true;
+  }
 
-    // let {from, to} = state.selection, attrs = null
-    // if (state.selection instanceof NodeSelection && state.selection.node.type == nodeType)
-    //   attrs = state.selection.node.attrs
+  @action
+  insertImage({ nodeType, view }, image) {
+    let attrs = {
+      src: imageSrc(null, { model: image, attr: 'image' }),
+      srcset: generateSrcset(get(image, 'image')),
+      sizes: generateSizes(),
+      alt: image.caption,
+      style: 'max-width: 100%'
+    }
 
-    // return openPrompt({
-    //   title: "Insert image",
-    //   fields: {
-    //     src: new TextField({label: "Location", required: true, value: attrs && attrs.src}),
-    //     title: new TextField({label: "Title", value: attrs && attrs.title}),
-    //     alt: new TextField({label: "Description",
-    //                         value: attrs ? attrs.alt : state.doc.textBetween(from, to, " ")})
-    //   },
-    //   callback(attrs) {
-    //     view.dispatch(view.state.tr.replaceSelectionWith(nodeType.createAndFill(attrs)))
-    //     view.focus()
-    //   }
-    // });
+    view.dispatch(view.state.tr.replaceSelectionWith(nodeType.createAndFill(attrs)));
+    view.focus()
   }
 
   @action

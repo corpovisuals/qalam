@@ -113,3 +113,26 @@ export function generateSizes(vwset = {}) {
 
   return sizeStr;
 }
+
+export function generateSrcset(image) {
+  let checkImg = image?.original;
+
+  if (checkImg) {
+    let srcs = '';
+    let staticHost = ENV.STATIC_HOST_NAME || ENV.STORAGE_ENDPOINT;
+
+    Object.keys(image).filter(w => w !== 'original').forEach((width, index) => {
+      let img = image[width];
+
+      if (index > 0) {
+        srcs += ', ';
+      }
+
+      srcs += `${staticHost}/uploads/${img.storage}/${img.id} ${width}w`;
+    });
+
+    return srcs;
+  } else {
+    return null;
+  }
+}
