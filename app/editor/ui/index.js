@@ -69,6 +69,18 @@ export function buildMenuItems(schema, addons, options) {
     });
   }
 
+  if (type = schema.marks.underline) {
+    r.toggleUnderline = apply(markItem, type, {title: 'Toggle underline', icon: icons.underline});
+  }
+
+  if (type = schema.marks.strikethrough) {
+    r.toggleStrikethrough = apply(markItem, type, {title: 'Toggle strikethrough', icon: icons.strikethrough});
+  }
+
+  if (type = schema.marks.superscript) {
+    r.toggleSuperscript = apply(markItem, type, {title: 'Toggle superscript', icon: icons.superscript});
+  }
+
   if (type = schema.nodes.image) {
     r.insertImage = insertImageItem(type, {
       title: 'Insert image',
@@ -177,6 +189,7 @@ export function buildMenuItems(schema, addons, options) {
   ]), { label: 'Style' });
 
   r.inlineMenu = [cut([r.toggleStrong, r.toggleEm, r.toggleLink])];
+  r.textMenu = [cut([r.toggleUnderline, r.toggleStrikethrough, r.toggleSuperscript])];
   r.blockMenu = [cut([r.wrapBulletList, r.wrapOrderedList, joinUpItem, liftItem])];
   r.alignMenu = [cut([r.alignLeft, r.alignRight, r.alignCenter, r.alignJustify])];
   r.undoRedo = [[undoItem, redoItem]];
@@ -184,6 +197,7 @@ export function buildMenuItems(schema, addons, options) {
   r.fullMenu = [].concat(
     [[r.typeMenu]],
     r.inlineMenu,
+    r.textMenu,
     r.alignMenu,
     r.blockMenu,
     [[r.insertMenu]],

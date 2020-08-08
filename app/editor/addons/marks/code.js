@@ -8,8 +8,8 @@ export default class Code extends Mark {
 
   get schema() {
     return {
-      parseDOM: [{tag: "code"}],
-      toDOM() { return ["code", 0] }
+      parseDOM: [{ tag: 'code' }],
+      toDOM() { return ['code', 0] }
     }
   }
 

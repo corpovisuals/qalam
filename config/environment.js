@@ -21,6 +21,9 @@ module.exports = function(environment) {
           'faBold',
           'faItalic',
           'faLink',
+          'faUnderline',
+          'faStrikethrough',
+          'faSuperscript',
           'faListUl',
           'faListOl',
           'faAlignLeft',
@@ -28,7 +31,7 @@ module.exports = function(environment) {
           'faAlignCenter',
           'faAlignJustify',
           'faUndo',
-          'faRedo'
+          'faRedo',
         ]
       }
     },

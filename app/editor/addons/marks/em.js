@@ -8,7 +8,11 @@ export default class Em extends Mark {
 
   get schema() {
     return {
-      parseDOM: [{tag: "i"}, {tag: "em"}, {style: "font-style=italic"}],
+      parseDOM: [
+        { tag: 'i' },
+        { tag: 'em' },
+        { style: 'font-style=italic' }
+      ],
       toDOM() { return ["em", 0] }
     }
   }
