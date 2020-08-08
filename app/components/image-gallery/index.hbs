@@ -13,6 +13,7 @@
       <div local-class="list">
         <Loader::LazyModel
           @model="embedPhoto"
+          @params={{hash page=this.page perPage=this.perPage}}
           @width={{500}}
           @height={{150}} as |lazy|
         >
@@ -21,22 +22,34 @@
           </lazy.Loading>
 
           <lazy.Loaded as |resources|>
-            {{#each resources as |photo|}}
-              <div local-class="item">
-                <Responsive::Image
-                  @model={{photo}}
-                  @vwset={{hash hg="20vw" bg="20vw" xl="23vw" hd="23vw" lg="28vw" sm="50vw" xs="50vw"}}
-                  @alt={{photo.caption}}
-                />
+            <Paginator @totalPages={{resources.meta.totalPages}} @page={{this.page}}>
+              {{#each resources as |photo|}}
+                <div local-class="item">
+                  <div local-class="image-wrapper">
+                    <Image
+                      @model={{photo}}
+                      @vwset={{hash hg="20vw" bg="20vw" xl="23vw" hd="23vw" lg="28vw" sm="50vw" xs="50vw"}}
+                      @alt={{photo.caption}}
+                      @imgClassNames="img-cover"
+                    />
+                  </div>
 
-                <button
-                  {{on "click" (fn @insert photo)}}
-                  class="btn btn-primary"
-                >
-                  Insert
-                </button>
-              </div>
-            {{/each}}
+                  <div local-class="item-info-wrapper">
+                    <h5>{{photo.caption}}</h5>
+
+                    <h6>{{photo.credit}}</h6>
+
+                    <button
+                      type="button"
+                      {{on "click" (fn @insert photo)}}
+                      class="btn btn-primary"
+                    >
+                      Insert
+                    </button>
+                  </div>
+                </div>
+              {{/each}}
+            </Paginator>
           </lazy.Loaded>
         </Loader::LazyModel>
       </div>

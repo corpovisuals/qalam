@@ -42,7 +42,8 @@ export default class EmbedPhotoForm extends Component {
   }
 
   _onSuccess(_model) {
-    console.log('Success!');
+    let message = "Photo added successfully";
+    this.notifications.success(message, { autoClear: true, clearDuration: 1500 });
   }
 
   _onError(changeset, adapterError) {
