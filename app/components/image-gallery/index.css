@@ -2,6 +2,7 @@
   width: 80vw;
   height: 80vh;
   overflow-y: auto;
+  position: relative;
 }
 
 .title {
@@ -36,4 +37,12 @@
 .item-info-wrapper {
   flex: 3;
   padding-left: 1rem;
+}
+
+.close-screen {
+  position: absolute;
+  right: 1rem;
+  top: 10px;
+  border: none;
+  background: transparent;
 }
