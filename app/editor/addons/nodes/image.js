@@ -15,7 +15,8 @@ export default class Image extends Node {
         alt: { default: null },
         title: { default: null },
         classNames: { default: null },
-        style: { default: null }
+        style: { default: null },
+        metadata: { default: null }
       },
       group: "inline",
       draggable: true,

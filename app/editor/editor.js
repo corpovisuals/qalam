@@ -114,6 +114,7 @@ export class Editor {
     let options = this.options;
     let view = new EditorView(options.place, {
       state: this.state,
+      nodeViews: options.nodeViews,
 
       dispatchTransaction(transaction) {
         let newState = view.state.apply(transaction);
