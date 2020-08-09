@@ -6,7 +6,9 @@ export default Factory.extend({
   caption() {
     return faker.lorem.sentences(2);
   },
-  credit: faker.name.title,
+  credit() {
+    return `${faker.name.firstName()} ${faker.name.lastName()}`;
+  },
   image() {
     return randomImage({ size: 400 })
   },

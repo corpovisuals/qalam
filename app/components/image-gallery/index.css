@@ -1,3 +1,5 @@
+@value sm-font-size from 'qalam/styles/settings/typography';
+
 .container {
   width: 80vw;
   height: 80vh;
@@ -37,6 +39,19 @@
 .item-info-wrapper {
   flex: 3;
   padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.caption {
+  margin-bottom: 5px;
+}
+
+.credit {
+  font-size: rfs(sm-font-size);
+  margin-bottom: 8px;
 }
 
 .close-screen {

@@ -35,9 +35,13 @@
                   </div>
 
                   <div local-class="item-info-wrapper">
-                    <h5>{{photo.caption}}</h5>
+                    {{#if photo.caption}}
+                      <div local-class="caption">{{photo.caption}}</div>
+                    {{/if}}
 
-                    <h6>{{photo.credit}}</h6>
+                    {{#if photo.credit}}
+                      <div local-class="credit">{{photo.credit}}</div>
+                    {{/if}}
 
                     <button
                       type="button"
