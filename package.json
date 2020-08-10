@@ -1,6 +1,6 @@
 {
   "name": "qalam",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A WYSIWYG editor based on ProseMirror",
   "files": [
     "index.js",
@@ -26,7 +26,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/musaffa/qalam.git"
+    "url": "git://github.com/corpovisuals/qalam.git"
   },
   "devDependencies": {
     "@csstools/postcss-sass": "^4.0.0",
