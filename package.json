@@ -2,6 +2,11 @@
   "name": "qalam",
   "version": "0.0.2",
   "description": "A WYSIWYG editor based on ProseMirror",
+  "files": [
+    "index.js",
+    "app/editor",
+    "app/styles/qalam.css"
+  ],
   "main": "index.js",
   "style": "app/styles/qalam.css",
   "scripts": {
