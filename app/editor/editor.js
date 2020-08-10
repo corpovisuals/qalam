@@ -30,7 +30,7 @@ export class Editor {
       ]
     }
 
-    this.init(options);
+    return this.init(options);
   }
 
   init(options = {}) {
@@ -45,7 +45,7 @@ export class Editor {
     this.keymaps = this.createKeymaps();
     this.inputRules = this.createInputRules();
     this.state = this.createState();
-    this.view = this.createView();
+    return this.createView();
   }
 
   createAddons() {
