@@ -17,6 +17,7 @@ import {
   linkItem,
   styleItem,
   insertImageItem,
+  insertYoutubeItem,
   markItem,
   wrapListItem
 } from './items';
@@ -86,6 +87,13 @@ export function buildMenuItems(schema, addons, options) {
       title: 'Insert image',
       label: 'Image'
     }, options);
+  }
+
+  if (type = schema.nodes.iframe) {
+    r.insertYoutube = insertYoutubeItem(type, {
+      title: 'Insert Youtube',
+      label: 'Youtube'
+    });
   }
 
   if (type = schema.nodes.bullet_list) {
@@ -181,6 +189,10 @@ export function buildMenuItems(schema, addons, options) {
     r.insertTable && new DropdownSubmenu(r.insertTable, { label: 'Table' })
   ]), { label: 'Insert' });
 
+  r.embedMenu = new Dropdown(cut([
+    r.insertYoutube,
+  ]), { label: 'Embed' });
+
   r.typeMenu = new Dropdown(cut([
     r.makeParagraph, r.wrapBlockQuote,
     r.makeHead1 && new DropdownSubmenu(cut([
@@ -201,6 +213,7 @@ export function buildMenuItems(schema, addons, options) {
     r.alignMenu,
     r.blockMenu,
     [[r.insertMenu]],
+    [[r.embedMenu]],
     r.undoRedo
   );
 

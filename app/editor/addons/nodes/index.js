@@ -9,6 +9,7 @@ export { default as BulletList } from './bullet-list';
 export { default as OrderedList } from './ordered-list';
 export { default as ListItem } from './list-item';
 export { default as Image } from './image';
+export { default as Iframe } from './iframe';
 export { default as HardBreak } from './hard-break';
 export { default as Table } from './table/table';
 export { default as TableRow } from './table/table-row';
