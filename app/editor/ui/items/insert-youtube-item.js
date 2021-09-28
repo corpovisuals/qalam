@@ -27,6 +27,7 @@ export function insertYoutubeItem(nodeType, attrs) {
         },
         callback(attrs) {
           let cAttrs = {
+            src: attrs.src.replace('watch?v=', 'embed/'),
             style: 'width: 100%; aspect-ratio: 1200 / 660; border: 0;',
             allow: 'autoplay',
             allowfullscreen: 'true'
