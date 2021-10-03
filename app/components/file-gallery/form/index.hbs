@@ -1,16 +1,15 @@
 <ValidatedForm
-  @model={{changeset this.embedPhoto this.validations}}
+  @model={{changeset this.embedFile this.validations}}
   @on-submit={{this.submit}} as |f|
 >
-  <f.input @label="Caption" @name="caption" />
-  <f.input @label="Credit" @name="credit" />
+  <f.input @label="Name" @name="name" />
 
   <div class="form-group">
-    <f.input @label="Image" @name="image" @type="file" as |fi|>
-      <Inputs::Image
+    <f.input @label="Document" @name="document" @type="file" as |fi|>
+      <Inputs::Document
         @name={{fi.name}}
         @value={{fi.value}}
-        @imageRequirements={{this.imageRequirements}}
+        @documentRequirements={{this.documentRequirements}}
         @onUpdate={{fi.update}}
         @onBlur={{fi.setDirty}}
       />

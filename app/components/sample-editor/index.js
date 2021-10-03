@@ -8,10 +8,12 @@ import {
   generateSizes,
   getImageMetadata
 } from 'qalam/utils/image-utils';
+import { generateFileSrc } from 'qalam/utils/document-utils';
 
 export default class SampleEditor extends Component {
   @tracked editorStates = {}
   @tracked showImageGallery = false
+  @tracked showFileGallery = false
 
   setupEditor(element, [instance]) {
     instance.editorView = new Editor({
@@ -23,7 +25,8 @@ export default class SampleEditor extends Component {
           doc, null, 4
         );
       },
-      onImagePrompt: instance.onImagePrompt
+      onImagePrompt: instance.onImagePrompt,
+      onFilePrompt: instance.onFilePrompt
     });
   }
 
@@ -36,6 +39,11 @@ export default class SampleEditor extends Component {
   onImagePrompt(states) {
     this.editorStates = states;
     this.showImageGallery = true;
+  }
+
+  onFilePrompt(states) {
+    this.editorStates = states;
+    this.showFileGallery = true;
   }
 
   @action
@@ -67,7 +75,27 @@ export default class SampleEditor extends Component {
   }
 
   @action
+  insertFile({ nodeType, view }, file) {
+    this.showFileGallery = false;
+
+    let attrs = {
+      href: generateFileSrc({ model: file, attr: 'document' }),
+      title: file.name
+    };
+
+    view.dispatch(
+      view.state.tr.replaceSelectionWith(nodeType.createAndFill(attrs))
+    );
+    view.focus();
+  }
+
+  @action
   closeImageGallery() {
     this.showImageGallery = false;
+  }
+
+  @action
+  closeFileGallery() {
+    this.showFileGallery = false;
   }
 }

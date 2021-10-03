@@ -1,0 +1,53 @@
+<ModalDialog
+  @translucentOverlay={{true}}
+  @onClose={{@close}}
+>
+  <div local-class="container">
+    <h4 local-class="title">File Gallery</h4>
+
+    <div local-class="wrapper">
+      <div local-class="form">
+        <FileGallery::Form />
+      </div>
+
+      <div local-class="list">
+        <Loader::LazyModel
+          @model="embedFile"
+          @params={{hash page=this.page perPage=this.perPage}}
+          @width={{500}}
+          @height={{150}} as |lazy|
+        >
+          <lazy.Loading as |l|>
+            <l.Spinner />
+          </lazy.Loading>
+
+          <lazy.Loaded as |resources|>
+            <Paginator @totalPages={{resources.meta.totalPages}} @page={{this.page}}>
+              {{#each resources as |file|}}
+                <div local-class="item">
+                  <div local-class="item-info-wrapper">
+                    {{#if file.name}}
+                      <div local-class="name">{{file.name}}</div>
+                    {{/if}}
+
+                    <button
+                      type="button"
+                      {{on "click" (fn @insert file)}}
+                      class="btn btn-primary"
+                    >
+                      Insert
+                    </button>
+                  </div>
+                </div>
+              {{/each}}
+            </Paginator>
+          </lazy.Loaded>
+        </Loader::LazyModel>
+      </div>
+    </div>
+
+    <button type="button" local-class="close-screen" {{on "click" this.closeScreen}}>
+      &#10005;
+    </button>
+  </div>
+</ModalDialog>

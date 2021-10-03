@@ -63,6 +63,13 @@
         @insert={{fn this.insertImage this.editorStates}}
       />
     {{/if}}
+
+    {{#if this.showFileGallery}}
+      <FileGallery
+        @close={{this.closeFileGallery}}
+        @insert={{fn this.insertFile this.editorStates}}
+      />
+    {{/if}}
   </div>
 
 

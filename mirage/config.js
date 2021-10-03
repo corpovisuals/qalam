@@ -15,4 +15,7 @@ export default function() {
 
   this.resource('embed_photos');
   this.get('embed_photos', handleIndex('embedPhotos'));
+
+  this.resource('embed_files');
+  this.get('embed_files', handleIndex('embedFiles'));
 }

@@ -17,6 +17,7 @@ import {
   linkItem,
   styleItem,
   insertImageItem,
+  insertFileItem,
   insertYoutubeItem,
   markItem,
   wrapListItem
@@ -86,6 +87,13 @@ export function buildMenuItems(schema, addons, options) {
     r.insertImage = insertImageItem(type, {
       title: 'Insert image',
       label: 'Image'
+    }, options);
+  }
+
+  if (type = schema.nodes.file) {
+    r.insertFile = insertFileItem(type, {
+      title: 'Insert file',
+      label: 'File'
     }, options);
   }
 
@@ -186,6 +194,7 @@ export function buildMenuItems(schema, addons, options) {
 
   r.insertMenu = new Dropdown(cut([
     r.insertImage,
+    r.insertFile,
     r.insertTable && new DropdownSubmenu(r.insertTable, { label: 'Table' })
   ]), { label: 'Insert' });
 

@@ -32,6 +32,7 @@ module.exports = function(environment) {
           'faAlignJustify',
           'faUndo',
           'faRedo',
+          'faFileAlt',
         ]
       }
     },

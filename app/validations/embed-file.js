@@ -4,9 +4,7 @@ import {
 import validateFile from '../validators/file';
 
 export default {
-  caption: validateLength({ allowBlank: true, max: 250 }),
+  name: validateLength({ allowBlank: true, max: 160 }),
 
-  credit: validateLength({ allowBlank: true, max: 100 }),
-
-  image: validateFile()
+  document: validateFile()
 };
