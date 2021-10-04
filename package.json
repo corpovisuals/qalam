@@ -1,6 +1,6 @@
 {
   "name": "qalam",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A WYSIWYG editor based on ProseMirror",
   "files": [
     "index.js",

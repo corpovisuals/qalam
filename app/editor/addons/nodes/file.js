@@ -26,7 +26,6 @@ export default class File extends Node {
       ],
       toDOM(node) {
         let { href, title } = node.attrs;
-        title ||= href;
         return ['a', { href, title }, title]
       }
     }
